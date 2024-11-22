@@ -1,1 +1,9 @@
-<p>prova works!</p>
+<!-- <app-color-selector [(count)]="variabileInput"></app-color-selector>
+<span>{{variabileInput}}</span> -->
+<lgc-commonformitem [(Value)]="Username" [Type]="'text'"
+[Placeholder]="'Username'"
+></lgc-commonformitem>
+<lgc-commonformitem [(Value)]="Password" [Type]="'password'"
+[Placeholder]="'Password'"
+></lgc-commonformitem>
+<lgc-commonbutton [ButtonText]="'Submit'" [ButtonClass]="'primary'" [ButtonSize]="10" (click)="onSaveData()"></lgc-commonbutton>
