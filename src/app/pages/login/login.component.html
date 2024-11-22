@@ -1,0 +1,37 @@
+<div id="loginCnt">
+  <img src="./assets/images/logicaLogo2.svg" alt="" />
+
+  <div class="alert alert-danger center" role="alert" *ngIf="messages && messages.length > 0">
+    <span *ngFor="let item of messages">{{ item }}</span>
+  </div>
+  <p>{{ 'lblUsername' | translate }}</p>
+  <lgc-commonformitem
+    required
+    [(Value)]="loginModel.Username"
+    Placeholder="Username"
+    (keyup.enter)="Login()"
+  ></lgc-commonformitem>
+  <p>{{ 'lblPassword' | translate }}</p>
+  <lgc-commonformitem
+    required
+    [(Value)]="loginModel.Password"
+    Placeholder="Password"
+    Type="password"
+    (keyup.enter)="Login()"
+  ></lgc-commonformitem>
+
+  <lgc-commonbutton
+    ButtonText="Login"
+    ButtonClassIcon="sign-in"
+    ButtonSize="md"
+    Width="100%"
+    ButtonType="newLogica color2"
+    [Is_Loading]="isLoading"
+    (click)="Login()"
+  ></lgc-commonbutton>
+</div>
+
+<div id="footer">
+  <p id="powered">Powered by</p>
+  <img src="./assets/images/logicaName.png" alt="" />
+</div>
