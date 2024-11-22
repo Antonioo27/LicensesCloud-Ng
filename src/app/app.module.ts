@@ -4,14 +4,12 @@ import { AppComponent } from './app.component';
 import { ProvaComponent } from './prova/prova.component';
 import { LgcSharedModule } from './@shared/shared.module';
 import { BlocksModule } from '@lgccommon/lib/blocks/blocks.module';
-import { ColorSelectorComponent } from './color-selector/color-selector.component';
+import { Forms } from '@lgccommon/lib/models/quality/quality.model';
 import { FormsModule } from '@angular/forms';
-
 @NgModule({
   declarations: [
     AppComponent,
     ProvaComponent,
-    ColorSelectorComponent
   ],
   imports: [
     BrowserModule,
@@ -19,6 +17,7 @@ import { FormsModule } from '@angular/forms';
     BlocksModule,
     FormsModule
   ],
+
   providers: [],
   bootstrap: [AppComponent]
 })

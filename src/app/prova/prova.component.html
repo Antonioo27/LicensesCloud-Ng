@@ -1,9 +1,18 @@
-<!-- <app-color-selector [(count)]="variabileInput"></app-color-selector>
-<span>{{variabileInput}}</span> -->
-<lgc-commonformitem [(Value)]="Username" [Type]="'text'"
-[Placeholder]="'Username'"
-></lgc-commonformitem>
-<lgc-commonformitem [(Value)]="Password" [Type]="'password'"
-[Placeholder]="'Password'"
-></lgc-commonformitem>
-<lgc-commonbutton [ButtonText]="'Submit'" [ButtonClass]="'primary'" [ButtonSize]="10" (click)="onSaveData()"></lgc-commonbutton>
+
+
+<div style="display: flex; flex-direction: column; align-items: center; gap: 50px; margin-top: 20px;">
+  <div>
+    <span>USERNAME</span>
+  <lgc-commonformitem [Type]="'text'" [(Value)]="user" id="user"></lgc-commonformitem>
+  </div>
+  <div>
+    <span>PASSWORD</span>
+    <lgc-commonformitem [Type]="'text'" [(Value)]="password"></lgc-commonformitem>
+  </div>
+  <lgc-commonbutton [ButtonText]="'INVIA'" [ButtonSize]="'btn btn-primary btn-sm'" (ButtonAction)="confronta()" [Is_Loading]="true" ></lgc-commonbutton>
+</div>
+<div>{{conf_all}}   </div>
+
+
+
+

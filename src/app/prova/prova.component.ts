@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, inject} from '@angular/core';
+import { LoginService } from '@app/services/login/login.service';
 
 @Component({
   selector: 'app-prova',
@@ -6,27 +7,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./prova.component.scss']
 })
 export class ProvaComponent {
+logServ:any=inject(LoginService);
+user:string="";
+password:string="";
+conf_all="";
 
-  usernameList: { [key: string]: string } = {
-    "Antonio": "admin",
-    "Luca": "admin",
-    "Vincenzo": "admin"
-  };
-
-  Username: string = "Antonio";
-
-  Password: string = "admin";
-
-
-  onSaveData() {
-    if(this.Username in this.usernameList){
-      if(this.Password == this.usernameList[this.Username])
-        console.log("il bro c'è");
-
-    }
-    else
-      console.log("il bro non ce");
-    // controllo che esista lutente
-  }
+confronta(){
+  if(this.user==this.logServ.getUser() && this.password==this.logServ.getPassword()){
+    this.conf_all="APPROVATO"
+  }else{this.conf_all="NON APPROVATO"}
 
 }
+}
+
+
+
