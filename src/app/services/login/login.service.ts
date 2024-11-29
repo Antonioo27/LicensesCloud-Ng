@@ -11,7 +11,7 @@ export class LoginService extends BaseService {
 
   public Login(loginModel: LoginModel): Promise<CredentialMiniModel> {
     return new Promise<CredentialMiniModel>((resolve, reject) => {
-      this.http.post(`${this.BaseUrl_V}/auth/login`, loginModel, this.HttpOptions).subscribe({
+      this.http.post(`${this.BaseUrl_V}/Login/login`, loginModel, this.HttpOptions).subscribe({
         next: (value: any) => {
           let credentialModel = new CredentialMiniModel();
           credentialModel.Token = value;

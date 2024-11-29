@@ -1,17 +1,17 @@
 <div id="loginCnt">
-  <img src="./assets/images/logicaLogo2.svg" alt="" />
+  <img src="../../../assets/images/logicaLogo2.svg" alt="" />
 
   <div class="alert alert-danger center" role="alert" *ngIf="messages && messages.length > 0">
     <span *ngFor="let item of messages">{{ item }}</span>
   </div>
-  <p>{{ 'lblUsername' | translate }}</p>
+  <p>{{ 'Username' }}</p>
   <lgc-commonformitem
     required
     [(Value)]="loginModel.Username"
     Placeholder="Username"
     (keyup.enter)="Login()"
   ></lgc-commonformitem>
-  <p>{{ 'lblPassword' | translate }}</p>
+  <p>{{ 'Password' }}</p>
   <lgc-commonformitem
     required
     [(Value)]="loginModel.Password"
@@ -33,5 +33,5 @@
 
 <div id="footer">
   <p id="powered">Powered by</p>
-  <img src="./assets/images/logicaName.png" alt="" />
+  <img src="../../../assets/images/logicaName.png" alt="" />
 </div>
