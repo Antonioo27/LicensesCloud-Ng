@@ -1,0 +1,58 @@
+#loginCnt {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+  max-width: 300px;
+  height:100vh;
+  margin: auto;
+  padding-bottom: 100px;
+
+  .alert {
+    max-width: 300px;
+
+    span {
+      display: block;
+      text-align: center;
+    }
+  }
+
+  img {
+    width: 170px;
+    margin-bottom: 70px;
+  }
+
+  lgc-commonformitem {
+    margin-bottom: 20px;
+    width:100%;
+    border-radius: 1mm;
+    padding: 7px;
+  }
+  p {
+    width: 100%;
+    margin-bottom: 7px;
+    font-weight: bold;
+  }
+
+  lgc-commonbutton {
+    margin-top: 20px;
+  }
+}
+
+#footer {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column;
+  p {
+    font-size: 14px;
+  }
+
+  img {
+    width: 110px;
+  }
+}

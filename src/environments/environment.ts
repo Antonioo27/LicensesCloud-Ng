@@ -17,7 +17,7 @@ export const environment = {
   serverUrl: '/api',
   defaultLanguage: 'en',
   supportedLanguages: ['en', 'it', 'cs', 'pl'],
-  base_href: '.', // DataProduction
+  base_href: '.',
   debug: false,
   MQTT_HOST: 'localhost',
   MQTT_PORT: 9001,

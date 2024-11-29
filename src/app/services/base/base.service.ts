@@ -34,17 +34,17 @@ export class BaseService {
 
   public get BaseUrl_V(): string {
     var url = this.appConfigService.Get('BASE_URL');
-    var DYNAMIC_BASE_URL = this.appConfigService.Get('DYNAMIC_BASE_URL');
+    // var DYNAMIC_BASE_URL = this.appConfigService.Get('DYNAMIC_BASE_URL');
 
-    var API_VERSION = this.appConfigService.Get('API_VERSION');
-    if (!API_VERSION) API_VERSION = '1'; // Default value
+    // var API_VERSION = this.appConfigService.Get('API_VERSION');
+    // if (!API_VERSION) API_VERSION = '1'; // Default value
 
-    if (DYNAMIC_BASE_URL === '1') {
-      url = window.location.origin + '/api';
-    }
-    if (API_VERSION && Number(API_VERSION) > 0) {
-      url += `/v${API_VERSION}`;
-    }
+    // if (DYNAMIC_BASE_URL === '1') {
+    //   url = window.location.origin + '/api';
+    // }
+    // if (API_VERSION && Number(API_VERSION) > 0) {
+    //   url += `/v${API_VERSION}`;
+    // }
     return url;
   }
 
