@@ -10,14 +10,14 @@ import { LoginService } from './services/login/login.service';
 import { CredentialsService } from './services/credentials/credentials.service';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
-import { LoginModule } from './pages/login/login.module';
 import { HttpClientModule } from '@angular/common/http';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { environment } from '@env/environment';
 import { AppConfigService } from '@lgccommon/lib/services/app-config.service';
 import { APP_INITIALIZER } from '@angular/core';
 import { LicenceMgrComponent } from './pages/licence-mgr/licence-mgr.component';
-import { LicenceMgrModule } from './pages/licence-mgr/licence-mgr.module';
+import { PagesRoutingModule } from './pages/pages-routing.module';
+import { PagesModule } from './pages/pages.module';
 
 export function loadAppConfigSync() {
   var url = `${environment.base_href}/assets/config/app.config.json`;
@@ -37,9 +37,7 @@ var temp = loadAppConfigSync();
     BaseComponent,
   ],
   imports: [
-    LoginModule,
-    LicenceMgrModule,
-
+    PagesModule,
     BrowserModule,
     HttpClientModule,
     TranslateModule.forRoot(),
