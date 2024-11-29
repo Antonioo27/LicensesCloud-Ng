@@ -5,9 +5,11 @@ import { LicenceMgrComponent } from './pages/licence-mgr/licence-mgr.component';
 // import { ErrorPage } from './pages/errorpage/errorpage.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent },
-  { path: 'licenceMgr', component: LicenceMgrComponent }
+  {
+    path: '',
+    redirectTo: '/pages/licenceMgr',
+    pathMatch: 'full',
+  }
 ];
 
 @NgModule({
