@@ -39,22 +39,6 @@ export class LoginComponent extends BaseComponent {
           this.router.navigate([url], {
             replaceUrl: true,
           });
-          // var ReturnUrl = new DefaultUrlSerializer().parse(url);
-          // var newUrl = '';
-
-          // // delete ReturnUrl.queryParams['UserName'];
-          // // delete ReturnUrl.queryParams['PassWord'];
-
-          // if (alternativeUrl) {
-          //   newUrl = alternativeUrl;
-          // } else {
-          //   newUrl = ReturnUrl.toString();
-          // }
-
-          // if (forceLocationChange) {
-          //   window.location.href = newUrl;
-          // } else {
-          // }
 
         })
         .catch((reason: any) => {

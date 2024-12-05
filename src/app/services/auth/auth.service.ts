@@ -8,18 +8,13 @@ import { HttpContext } from '@angular/common/http';
 })
 export class AuthService extends BaseService {
 
-  constructor(private httpContext: HttpContext) { super(); }
-
-  public isAuthenticated(): Promise<CredentialMiniModel> {
-    return new Promise<CredentialMiniModel>((resolve, reject) => {
+  public isAuthenticated(): Promise<boolean> {
+    return new Promise<boolean>((resolve, reject) => {
       if(this.credentialsService.credentials) {
-        this.http.post(`${this.BaseUrl_V}/Login/isLoggedIn`, { token: this.credentialsService.credentials.Token,  }, this.HttpOptions).subscribe(
+        this.http.post(`${this.BaseUrl_V}/Login/isLoggedIn`, { token: this.credentialsService.credentials.Token }, this.HttpOptions).subscribe(
           {
-            next: (value: CredentialMiniModel) => {
-              if(value && value.Token)
-                resolve(value);
-              else
-                resolve(null);
+            next: (value: boolean) => {
+              resolve(value);
             },
             error: (reason: any) => {
               reject(reason);

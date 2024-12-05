@@ -18,35 +18,15 @@ export class AuthGuard extends AuthBaseGuard {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return new Promise<boolean | UrlTree>((resolve, reject) => {
-      this.authService.isAuthenticated().then((res) => {
-        // var navigateToLogin = false;
-        // var UserName: string = state.root.queryParams['UserName'];
-        // var PassWord: string = state.root.queryParams['PassWord'];
-        // if (res) {
-        //   if (UserName && res.Pr_UserName !== UserName) {
-        //     navigateToLogin = true;
-        //   }
-        // } else {
-        //  navigateToLogin = true;
-        // }
-        // if (navigateToLogin) {
-        this.router.navigate(['/login'], {
+    return this.authService.isAuthenticated().then((isAuthenticated) => {
+      if (isAuthenticated) {
+        return true;
+      } else {
+        // Altrimenti lo reindirizziamo alla pagina di login
+        return this.router.createUrlTree(['/login'], {
           queryParams: { ReturnUrl: state.url },
-          replaceUrl: true,
         });
-        // }
-        // Se esistono i parametri UserName e PassWord ricevuti via url, li devo eliminare per evitare
-        // problemi con le rotte di Angular
-        var ReturnUrl = new DefaultUrlSerializer().parse(state.url);
-        // if (ReturnUrl.queryParams['UserName'] && ReturnUrl.queryParams['PassWord']) {
-        //   delete ReturnUrl.queryParams['UserName'];
-        //   delete ReturnUrl.queryParams['PassWord'];
-        //   resolve(ReturnUrl);
-        // } else {
-        resolve(true);
-        // }
-      });
+      }
     });
   }
 }
