@@ -8,25 +8,14 @@ import { AuthGuard } from '@app/helpers/auth/auth.guard';
 
 const routes: Routes = [
   {
-    path: 'pages',
-    children: [
-      {
-        path: '',
-        redirectTo: '/pages/licenceMgr',
-        pathMatch: 'full',
-      },
-      {
-        path: 'login',
-        component: LoginComponent,
-        canActivate: [AuthBaseGuard],
-      },
-      {
-        path: 'licenceMgr',
-        component: LicenceMgrComponent,
-        canActivate: [AuthGuard],
-      }
-    ]
-  }
+    path: 'login',
+    component: LoginComponent,
+  },
+  {
+    path: 'home',
+    component: LicenceMgrComponent,
+    canActivate: [AuthGuard],
+  },
 
 ];
 

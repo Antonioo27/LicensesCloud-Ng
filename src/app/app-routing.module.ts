@@ -7,7 +7,7 @@ import { LicenceMgrComponent } from './pages/licence-mgr/licence-mgr.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/pages/licenceMgr',
+    redirectTo: '/home',
     pathMatch: 'full',
   }
 ];

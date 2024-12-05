@@ -36,25 +36,25 @@ export class LoginComponent extends BaseComponent {
 
           // Naviga alla homepage
           var url = this.route.snapshot.queryParams['ReturnUrl'];
-          var ReturnUrl = new DefaultUrlSerializer().parse(url);
-          var newUrl = '';
+          this.router.navigate([url], {
+            replaceUrl: true,
+          });
+          // var ReturnUrl = new DefaultUrlSerializer().parse(url);
+          // var newUrl = '';
 
-          // delete ReturnUrl.queryParams['UserName'];
-          // delete ReturnUrl.queryParams['PassWord'];
+          // // delete ReturnUrl.queryParams['UserName'];
+          // // delete ReturnUrl.queryParams['PassWord'];
 
-          if (alternativeUrl) {
-            newUrl = alternativeUrl;
-          } else {
-            newUrl = ReturnUrl.toString();
-          }
+          // if (alternativeUrl) {
+          //   newUrl = alternativeUrl;
+          // } else {
+          //   newUrl = ReturnUrl.toString();
+          // }
 
-          if (forceLocationChange) {
-            window.location.href = newUrl;
-          } else {
-            this.router.navigate([newUrl], {
-              replaceUrl: true,
-            });
-          }
+          // if (forceLocationChange) {
+          //   window.location.href = newUrl;
+          // } else {
+          // }
 
         })
         .catch((reason: any) => {
