@@ -48,6 +48,15 @@ export class BaseService {
     return url;
   }
 
-  public get HttpOptions() { return this._httpOptions; }
+  public get HttpOptions() {
+    if (this.credentialsService.credentials && this.credentialsService.credentials.Token != '') {
+      if (this._httpOptions.headers.has('Authorization')) this._httpOptions.headers = this._httpOptions.headers.delete('Authorization');
+        this._httpOptions.headers = this._httpOptions.headers.append(
+        'Authorization',
+        `Bearer ${this.credentialsService.credentials.Token.toString()}`
+      );
+    }
+    return this._httpOptions;
+  }
 
 }

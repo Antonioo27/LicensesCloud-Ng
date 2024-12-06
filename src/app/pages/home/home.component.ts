@@ -9,14 +9,21 @@ import { CustomersService } from '@app/services/customers/customers.service';
 })
 export class HomeComponent extends BaseComponent implements OnInit{
 
+  public customers: any[] = [];
+
   constructor(private customersService:CustomersService)
   {
     super();
   }
 
   ngOnInit(): void {
-    this.customersService.getCustomers()
+    this.customersService.getCustomers().then((data) => {
+      this.customers = data;
+    });
   }
 
+  objectKeys(obj: any): string[] {
+    return Object.keys(obj);
+  }
 
 }
