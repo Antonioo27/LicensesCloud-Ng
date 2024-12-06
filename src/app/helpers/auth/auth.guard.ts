@@ -19,12 +19,19 @@ export class AuthGuard extends AuthBaseGuard {
     state: RouterStateSnapshot
   ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     return this.authService.isAuthenticated().then((isAuthenticated) => {
+      let redirectUrl = "";
+
+      const urlSegments = state.url;
+      const urlTree = new DefaultUrlSerializer().parse(urlSegments);
+      const lastSegment = urlTree.root.children['primary'].segments[urlTree.root.children['primary'].segments.length - 1];
+      if (lastSegment && lastSegment.path === 'licenceMgr') {
+        redirectUrl = '/licenceMgr/home';
+      }
       if (isAuthenticated) {
-        return true;
+        return redirectUrl != "" ? this.router.createUrlTree([redirectUrl]) : true;
       } else {
-        // Altrimenti lo reindirizziamo alla pagina di login
         return this.router.createUrlTree(['/login'], {
-          queryParams: { ReturnUrl: state.url },
+          queryParams: { ReturnUrl: redirectUrl != "" ? redirectUrl : state.url },
         });
       }
     });

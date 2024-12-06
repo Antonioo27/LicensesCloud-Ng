@@ -1,0 +1,29 @@
+<div class="custom-toolbar">
+    <button
+      kendoButton
+      [svgIcon]="menuSvg"
+      fillMode="flat"
+      (click)="drawer.toggle()"
+
+    ></button>
+    <span class="title">Gestione Users</span>
+  </div>
+  <kendo-drawer-container>
+    <kendo-drawer
+      #drawer
+      [items]="items"
+      mode="push"
+      [mini]="true"
+      [expanded]="true"
+      (select)="onSelect($event)"
+    >
+    </kendo-drawer>
+
+    <kendo-drawer-content>
+      <!-- TODO: Capire come gestire due router outlet annidati-->
+        <router-outlet></router-outlet>
+    </kendo-drawer-content>
+
+
+  </kendo-drawer-container>
+
