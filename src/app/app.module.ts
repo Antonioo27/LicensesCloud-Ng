@@ -4,19 +4,15 @@ import { AppComponent } from './app.component';
 import { LgcSharedModule } from './@shared/shared.module';
 import { BlocksModule } from '@lgccommon/lib/blocks/blocks.module';
 import { FormsModule } from '@angular/forms';
-import { LoginComponent } from './pages/login/login.component';
 import { BaseComponent } from './components/base/base.component';
 import { LoginService } from './services/login/login.service';
 import { CredentialsService } from './services/credentials/credentials.service';
-import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { environment } from '@env/environment';
 import { AppConfigService } from '@lgccommon/lib/services/app-config.service';
 import { APP_INITIALIZER } from '@angular/core';
-import { LicenceMgrComponent } from './pages/licence-mgr/licence-mgr.component';
-import { PagesRoutingModule } from './pages/pages-routing.module';
 import { PagesModule } from './pages/pages.module';
 
 export function loadAppConfigSync() {
