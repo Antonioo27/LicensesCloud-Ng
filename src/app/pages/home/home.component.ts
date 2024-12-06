@@ -1,6 +1,9 @@
+import { LgccommonModule } from '@lgccommon/public-api';
 import { Component, inject, OnInit } from '@angular/core';
 import { BaseComponent } from '@app/components/base/base.component';
 import { CustomersService } from '@app/services/customers/customers.service';
+import { CustomerModel } from '@lgccommon/lib/models/licencesCloud/Customer.model';
+
 
 @Component({
   selector: 'app-home',
@@ -9,21 +12,15 @@ import { CustomersService } from '@app/services/customers/customers.service';
 })
 export class HomeComponent extends BaseComponent implements OnInit{
 
-  public customers: any[] = [];
+  public gridData: CustomerModel[] = [];
 
-  constructor(private customersService:CustomersService)
-  {
+  constructor(private customersService:CustomersService) {
     super();
   }
 
   ngOnInit(): void {
     this.customersService.getCustomers().then((data) => {
-      this.customers = data;
+      this.gridData = data;
     });
   }
-
-  objectKeys(obj: any): string[] {
-    return Object.keys(obj);
-  }
-
 }

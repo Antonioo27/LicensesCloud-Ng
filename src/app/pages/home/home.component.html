@@ -1,13 +1,15 @@
+<kendo-grid [data]="gridData">
+  <kendo-grid-column field="userId" title="User ID"></kendo-grid-column>
+  <kendo-grid-column field="name" title="Name"></kendo-grid-column>
+  <kendo-grid-column field="privateCode" title="Private code"></kendo-grid-column>
+  <kendo-grid-column field="licenceId" title="Licence ID"></kendo-grid-column>
 
-<!--
-Aggiungaegrge iungere header con token in base service
-non serve aggiunger campo autentication agli header
--->
 
-<lgc-debug-json [data]="customers" [enabled]="true"></lgc-debug-json>
-<!--
-<div *ngFor="let customer of customers">
-  <div *ngFor="let key of objectKeys(customer)">
-    {{ key }}: {{ customer[key] }}
-  </div>
-</div> -->
+  <ng-template kendoGridDetailTemplate let-dataItem>
+    <app-home-detail [gridData]="dataItem.licence"></app-home-detail>
+    <!-- <lgc-debug-json [data]="dataItem.licence" [enabled]="true">
+    </lgc-debug-json> -->
+  </ng-template>
+
+
+</kendo-grid>

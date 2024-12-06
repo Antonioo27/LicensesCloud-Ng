@@ -1,0 +1,24 @@
+<div class="detailHeader">
+    <span><b>Versione</b>: {{ gridData.version }}</span>
+    <span><b>HDD Serial</b>: {{ gridData.hddSerial }}</span>
+    <span><b>Proto Serial</b>: {{ gridData.protoSerial }}</span>
+    <span><b>Data di scadenza</b>: {{ gridData.expiryDate }}</span>
+</div>
+
+<kendo-grid
+    [data]="gridData.items"
+    [height]="500"
+    [scrollable]="'virtual'">
+    <kendo-grid-column field="type" title="Type" [sortable]="true" [hidden]="true"></kendo-grid-column>
+    <kendo-grid-column field="name" title="Name"></kendo-grid-column>
+    <kendo-grid-column field="nr" title="Numero"></kendo-grid-column>
+    <kendo-grid-column field="enabled" title="Abilitato"></kendo-grid-column>
+    <kendo-grid-column field="isExpired" title="Scaduta"></kendo-grid-column>
+    <kendo-grid-column field="expiryDate" title="Data di scadenza"></kendo-grid-column>
+
+</kendo-grid>
+
+<!--
+-id, tutti i campi singoli (fuori)
+-tutto l' array di items (va messo nella tabella)
+-->
