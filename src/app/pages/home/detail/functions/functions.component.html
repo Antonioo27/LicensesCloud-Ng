@@ -1,0 +1,10 @@
+<div id="funzioni">Funzioni</div>
+<kendo-grid [data]="licenseType1">
+  <kendo-grid-column field="type" title="Type" [sortable]="true" [hidden]="true"></kendo-grid-column>
+  <kendo-grid-column field="enabled" title="Enabled">
+    <ng-template kendoGridCellTemplate let-dataItem>
+      <input type="checkbox" [checked]="dataItem.enabled" (change)="dataItem.enabled = !dataItem.enabled">
+    </ng-template>
+  </kendo-grid-column>
+  <kendo-grid-column field="name" title="Name"></kendo-grid-column>
+</kendo-grid>

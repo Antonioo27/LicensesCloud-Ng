@@ -6,18 +6,38 @@
 </div>
 
 
-    <kendo-grid
-        [data]="gridDataLicence.items">
-        <kendo-grid-column field="type" title="Type" [sortable]="true" [hidden]="true"></kendo-grid-column>
-        <kendo-grid-column field="name" title="Name"></kendo-grid-column>
-        <kendo-grid-column field="nr" title="Numero"></kendo-grid-column>
-        <kendo-grid-column field="enabled" title="Abilitato"></kendo-grid-column>
-        <kendo-grid-column field="isExpired" title="Scaduta"></kendo-grid-column>
-        <kendo-grid-column field="expiryDate" title="Data di scadenza"></kendo-grid-column>
-    </kendo-grid>
+<!-- Componente delle LicenceItem con Type = 1 -->
+
+ <div class = "container">
 
 
-<!--
+  <app-programs [licenseType0] = "licenceType0">
+  </app-programs>
+
+  <app-functions [licenseType1] = "licenceType1">
+  </app-functions>
+</div>
+
+
+
+
+
+
+<!-- <kendo-grid *ngIf="gridDataLicence.items[].type === 1; else elseBlock"
+            [data]="gridDataLicence.items">
+    <kendo-grid-column field="type" title="Type" [sortable]="true" [hidden]="true"></kendo-grid-column>
+    <kendo-grid-column field="name" title="Name"></kendo-grid-column>
+    <kendo-grid-column field="nr" title="Numero"></kendo-grid-column>
+    <kendo-grid-column field="enabled" title="Abilitato"></kendo-grid-column>
+    <kendo-grid-column field="isExpired" title="Scaduta"></kendo-grid-column>
+    <kendo-grid-column field="expiryDate" title="Data di scadenza"></kendo-grid-column>
+</kendo-grid>
+<ng-template #elseBlock>
+     Contenuto da mostrare se la condizione non è soddisfatta
+</ng-template>
+
+
+
 -id, tutti i campi singoli (fuori)
 -tutto l' array di items (va messo nella tabella)
 -->

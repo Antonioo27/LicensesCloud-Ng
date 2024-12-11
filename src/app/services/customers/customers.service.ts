@@ -15,8 +15,23 @@ export class CustomersService extends BaseService {
   // Implementare return new Promise e CustomerModel
   public getCustomers(): Promise<CustomerModel[]>  {
     return new Promise<CustomerModel[]>((resolve, reject) => {
-        this.http.get(`${this.BaseUrl_V}/Customer`, this.HttpOptions).subscribe({
+        this.http.get(`${this.BaseUrl_V}/Customer/customers`, this.HttpOptions).subscribe({
           next: (value: CustomerModel[]) => {
+            resolve(value);
+          },
+          error: (reason: any) => {
+            reject(reason);
+          },
+          complete: () => {},
+        });
+      }
+    );
+  }
+
+  public getCustomer(id: number): Promise<CustomerModel>  {
+    return new Promise<CustomerModel>((resolve, reject) => {
+        this.http.get(`${this.BaseUrl_V}/Customer/customer/${id}`, this.HttpOptions).subscribe({
+          next: (value: CustomerModel) => {
             resolve(value);
           },
           error: (reason: any) => {

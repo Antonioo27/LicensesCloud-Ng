@@ -1,0 +1,20 @@
+<div id="programmi">Programmi</div>
+<kendo-grid [data]="licenseType0">
+  <kendo-grid-column field="type" title="Type" [sortable]="true" [hidden]="true"></kendo-grid-column>
+  <kendo-grid-column field="enabled" title="Enabled">
+    <ng-template kendoGridCellTemplate let-dataItem>
+      <input type="checkbox" [checked]="dataItem.enabled" (change)="dataItem.enabled = !dataItem.enabled">
+    </ng-template>
+  </kendo-grid-column>
+  <kendo-grid-column field="name" title="Name"></kendo-grid-column>
+  <kendo-grid-column field="nr" title="Nr">
+    <!-- <ng-template kendoGridCellTemplate let-dataItem>
+      <input type="number" [(ngModel)]="dataItem.nr">
+    </ng-template> -->
+  </kendo-grid-column>
+    <kendo-grid-column field="date" title="Date" [format]="'{0:dd/MM/yyyy}'">
+    <!-- <ng-template kendoGridCellTemplate let-dataItem>
+      <input type="date" [(ngModel)]="dataItem.date">
+    </ng-template> -->
+    </kendo-grid-column>
+</kendo-grid>

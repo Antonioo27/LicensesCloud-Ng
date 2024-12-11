@@ -8,6 +8,8 @@ import { HomeComponent } from './home/home.component';
 import { LgcSharedTelerikModule } from '@app/@shared/shared-telerik.module';
 import { LgcSharedModule } from '@app/@shared/shared.module';
 import { HomeDetailComponent } from './home/detail/home-detail.component';
+import { ProgramsComponent } from './home/detail/programs/programs.component';
+import { FunctionsComponent } from './home/detail/functions/functions.component';
 
 
 
@@ -16,6 +18,8 @@ import { HomeDetailComponent } from './home/detail/home-detail.component';
     HomeComponent,
     HomeDetailComponent,
     LoginComponent,
+    ProgramsComponent,
+    FunctionsComponent,
   ],
   imports: [
     CommonModule,

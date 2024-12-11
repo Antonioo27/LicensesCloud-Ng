@@ -14,6 +14,8 @@ import { ActivatedRoute } from '@angular/router';
 export class HomeDetailComponent extends HomeComponent implements OnInit {
   // @Input id_customer
   gridDataLicence: LicenceModel;
+  licenceType1 = [];
+  licenceType0 = [];
 
   idCustomer: number;
 
@@ -28,10 +30,19 @@ export class HomeDetailComponent extends HomeComponent implements OnInit {
       // Use the value of id here
       this.idCustomer = +id; // Use the + sign to convert the string to a number
     });
-    this.customersService.getCustomers().then((data) => {
-    const index = data.findIndex((item) => item.userId == this.idCustomer);
-    this.gridDataLicence = data[index].licence;
+    this.customersService.getCustomer(this.idCustomer).then((data) => {
+      this.gridDataLicence = data.licence;
+
+      this.licenceType1 = this.gridDataLicence.items.filter(item => item.type == 1);
+      this.licenceType0 = this.gridDataLicence.items.filter(item => item.type == 0);
+
+      console.log(this.gridDataLicence); // Add this line to log the value of gridDataLicence
     });
+      // console.log(this.gridDataLicence)
+
+
   }
+
+
 
 }
