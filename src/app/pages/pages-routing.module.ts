@@ -5,6 +5,8 @@ import { AuthGuard } from '@app/helpers/auth/auth.guard';
 import { AuthLoginGuard } from '@app/helpers/auth/auth-login.guard';
 import { LayoutComponent } from '@app/layout/layout.component';
 import { HomeComponent } from './home/home.component';
+import { HomeDetailComponent } from './home/detail/home-detail.component';
+import * as path from 'path';
 
 const routes: Routes = [
   {
@@ -25,10 +27,23 @@ const routes: Routes = [
     {
       path: 'home',
       component: HomeComponent,
-      // canActivate: [AuthGuard],
     },
+    {
+       path: 'home/detail/:id',
+       component: HomeDetailComponent
+    },
+    {
+      path: 'home/detail',
+      redirectTo: '/admin/home',
+      pathMatch: 'full',
+    }
   ]
-  }
+  },
+  // {
+  //    path: 'admin/home/detail',
+  //    component: HomeDetailComponent
+  // }
+
 ];
 
 

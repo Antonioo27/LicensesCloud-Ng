@@ -9,10 +9,13 @@ my-app {
   display: flex;
   flex-direction: column;
 }
-
 kendo-drawer-container {
   flex: 1 1 auto;
   overflow-y: auto;
+  height: calc(100vh - 50px); // Subtract the height of the custom-toolbar from the viewport height
+}
+kendo-drawer{
+  height: auto;
 }
 .k-icon {
   font-size: 20px;

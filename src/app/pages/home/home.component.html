@@ -1,19 +1,32 @@
 
 
 <!-- <lgc-sidebarnew></lgc-sidebarnew> -->
-
 <kendo-grid [data]="gridData">
   <kendo-grid-column field="userId" title="User ID"></kendo-grid-column>
   <kendo-grid-column field="name" title="Name"></kendo-grid-column>
   <kendo-grid-column field="privateCode" title="Private code"></kendo-grid-column>
   <kendo-grid-column field="licenceId" title="Licence ID"></kendo-grid-column>
-
-
-  <ng-template kendoGridDetailTemplate let-dataItem>
-    <app-home-detail [gridData]="dataItem.licence"></app-home-detail>
-    <!-- <lgc-debug-json [data]="dataItem.licence" [enabled]="true">
-    </lgc-debug-json> -->
-  </ng-template>
-
-
+  <kendo-grid-column title="Mostra dettagli licenza" class="temp">
+    <ng-template kendoGridCellTemplate let-dataItem>
+      <div style="display: flex; justify-content: center;">
+        <button kendoGridEditCommand [primary]="true" (click)="onShowDetails(dataItem.userId)">Dettagli</button>
+      </div>
+    </ng-template>
+  </kendo-grid-column>
 </kendo-grid>
+
+<!-- <app-home-detail [gridDataLicence]="gridData[0].licence"></app-home-detail> -->
+
+
+
+
+
+
+
+
+  <!-- </kendo-grid-late kendoGridDetailTemplate let-dataItem>
+    <app-home-detail [gridData]="dataItem.licence"></app-home-detail>
+     <lgc-debug-json [data]="dataItem.licence" [enabled]="true">
+    </lgc-debug-json>
+  </ng-template> -->
+

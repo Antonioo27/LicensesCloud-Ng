@@ -13,8 +13,10 @@ import { CustomerModel } from '@lgccommon/lib/models/licencesCloud/Customer.mode
 export class HomeComponent extends BaseComponent implements OnInit{
 
   public gridData: CustomerModel[] = [];
+  showHomeDetail: boolean = false; // Proprietà per controllare la visibilità
 
-  constructor(private customersService:CustomersService) {
+
+  constructor(protected customersService:CustomersService) {
     super();
   }
 
@@ -22,5 +24,13 @@ export class HomeComponent extends BaseComponent implements OnInit{
     this.customersService.getCustomers().then((data) => {
       this.gridData = data;
     });
+  }
+
+  onShowDetails(id: number): void {
+    // Naviga in home/detail con l'ID come parametro di query
+    const currentUrl = this.router.url; // Ottieni la rotta attuale
+    this.router.navigate([`${currentUrl}/detail`, id]);
+    // this.router.navigate([`${currentUrl}/detail:${id}`]); // Aggiungi il segmento "admin" e l'ID come parte della rotta
+    // Resto del codice per gestire l'evento
   }
 }

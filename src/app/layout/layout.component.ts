@@ -23,7 +23,7 @@ export class LayoutComponent {
   public menuSvg: SVGIcon = menuIcon;
 
   public items: Array<DrawerItem> = [
-    { text: "Utenti", svgIcon: accessibilityIcon, selected: true },
+    { text: "Customers", svgIcon: accessibilityIcon, selected: true },
     { separator: true },
     { text: "Licenza", svgIcon: qrCodeIcon },
     { text: "Calendar", svgIcon: calendarIcon },
