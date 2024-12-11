@@ -5,9 +5,10 @@ import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/home',
+    redirectTo: '/admin/home',
     pathMatch: 'full',
-  }
+  },
+
 ];
 
 @NgModule({

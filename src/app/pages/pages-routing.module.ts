@@ -13,14 +13,19 @@ const routes: Routes = [
     canActivate: [AuthLoginGuard],
   },
   {
-    path:'licenceMgr',
+    path:'admin',
     component: LayoutComponent,
     canActivate: [AuthGuard],
     children : [
     {
+      path: '',
+      redirectTo: '/admin/home',
+      pathMatch: 'full',
+    },
+    {
       path: 'home',
-      component: LayoutComponent,
-      canActivate: [AuthGuard],
+      component: HomeComponent,
+      // canActivate: [AuthGuard],
     },
   ]
   }
