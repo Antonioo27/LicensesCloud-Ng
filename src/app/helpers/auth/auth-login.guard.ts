@@ -20,11 +20,11 @@ export class AuthLoginGuard extends AuthBaseGuard{
   ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     return this.authService.isAuthenticated().then((isAuthenticated) => {
       if (isAuthenticated) {
-        return this.router.createUrlTree(['/home']);
+        return this.router.createUrlTree(['/admin/home']);
       } else {
         if(!state.url.includes('ReturnUrl')) {
           return this.router.createUrlTree(['/login'], {
-            queryParams: { ReturnUrl: '/home' },
+            queryParams: { ReturnUrl: '/admin/home' },
           });
         }
       }
