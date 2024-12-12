@@ -10,6 +10,9 @@ export class ProgramsComponent {
 
   @Input() licenseType0 = [];
 
+  changeEnabled(){
+    this.licenseType0[0].enabled = (!this.licenseType0[0].enabled)
+  }
   // onChangeEnabled() {
   //   this.licenseType0.enabled = !(this.licenseType0.enabled);
   // }

@@ -1,4 +1,6 @@
-<div class="detailHeader">
+<lgc-loading *ngIf="isLoading"></lgc-loading>
+
+<div *ngIf="!isLoading" class="detailHeader">
     <span><b>Versione</b>: {{ gridDataLicence.version }}</span>
     <span><b>HDD Serial</b>: {{ gridDataLicence.hddSerial }}</span>
     <span><b>Proto Serial</b>: {{ gridDataLicence.protoSerial }}</span>
