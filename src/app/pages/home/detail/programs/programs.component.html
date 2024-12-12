@@ -3,18 +3,21 @@
   <kendo-grid-column field="type" title="Type" [sortable]="true" [hidden]="true"></kendo-grid-column>
   <kendo-grid-column field="enabled" title="Enabled">
     <ng-template kendoGridCellTemplate let-dataItem>
-      <input type="checkbox" [checked]="dataItem.enabled" (change)="dataItem.enabled = !dataItem.enabled">
+      <lgc-commonformitem Type="boolean" [(Value)]="dataItem.enabled"></lgc-commonformitem>
+      <!-- <input type="checkbox"   [(checked)]="dataItem.enabled"> -->
     </ng-template>
   </kendo-grid-column>
   <kendo-grid-column field="name" title="Name"></kendo-grid-column>
   <kendo-grid-column field="nr" title="Nr">
-    <!-- <ng-template kendoGridCellTemplate let-dataItem>
-      <input type="number" [(ngModel)]="dataItem.nr">
-    </ng-template> -->
+    <ng-template kendoGridCellTemplate let-dataItem>
+      <lgc-commonformitem Type="int" [(Value)]="dataItem.nr" [Disabled]="!dataItem.manageNr" ></lgc-commonformitem>
+    </ng-template>
   </kendo-grid-column>
-    <kendo-grid-column field="date" title="Date" [format]="'{0:dd/MM/yyyy}'">
-    <!-- <ng-template kendoGridCellTemplate let-dataItem>
-      <input type="date" [(ngModel)]="dataItem.date">
-    </ng-template> -->
-    </kendo-grid-column>
+    <kendo-grid-column field="expiryDate" title="Expiry Date" [format]="'{YYYY-MM-DDHHMMSS}'">
+    <ng-template kendoGridCellTemplate let-dataItem>
+      <lgc-commonformitem Type="datetimepicker" [(Value)]="dataItem.expiryDate" ></lgc-commonformitem>
+    </ng-template>
+  </kendo-grid-column>
 </kendo-grid>
+
+<div *ngFor="let item of licenseType0">{{item.expiryDate}}</div>

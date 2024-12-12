@@ -16,7 +16,7 @@ export class HomeDetailComponent extends HomeComponent implements OnInit {
   gridDataLicence: LicenceModel;
   licenceType1 = [];
   licenceType0 = [];
-
+  protected isLoading: boolean;
   idCustomer: number;
 
   constructor(customersService:CustomersService, route: ActivatedRoute) {
@@ -36,6 +36,7 @@ export class HomeDetailComponent extends HomeComponent implements OnInit {
 
       this.licenceType1 = this.gridDataLicence.items.filter(item => item.type == 1);
       this.licenceType0 = this.gridDataLicence.items.filter(item => item.type == 0);
+      this.isLoading = false;
 
       console.log(this.gridDataLicence); // Add this line to log the value of gridDataLicence
       this.isLoading = false;

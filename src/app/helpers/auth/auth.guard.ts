@@ -24,8 +24,8 @@ export class AuthGuard extends AuthBaseGuard {
       const urlSegments = state.url;
       const urlTree = new DefaultUrlSerializer().parse(urlSegments);
       const lastSegment = urlTree.root.children['primary'].segments[urlTree.root.children['primary'].segments.length - 1];
-      if (lastSegment && lastSegment.path === 'licenceMgr') {
-        redirectUrl = '/licenceMgr/home';
+      if (lastSegment && lastSegment.path === 'admin') {
+        redirectUrl = '/admin/home';
       }
       if (isAuthenticated) {
         return redirectUrl != "" ? this.router.createUrlTree([redirectUrl]) : true;
