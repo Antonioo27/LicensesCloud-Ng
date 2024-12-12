@@ -30,6 +30,7 @@ export class HomeDetailComponent extends HomeComponent implements OnInit {
       // Use the value of id here
       this.idCustomer = +id; // Use the + sign to convert the string to a number
     });
+    this.isLoading = true;
     this.customersService.getCustomer(this.idCustomer).then((data) => {
       this.gridDataLicence = data.licence;
 
@@ -37,6 +38,7 @@ export class HomeDetailComponent extends HomeComponent implements OnInit {
       this.licenceType0 = this.gridDataLicence.items.filter(item => item.type == 0);
 
       console.log(this.gridDataLicence); // Add this line to log the value of gridDataLicence
+      this.isLoading = false;
     });
       // console.log(this.gridDataLicence)
 
