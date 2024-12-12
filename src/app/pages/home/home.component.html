@@ -9,7 +9,7 @@
   <kendo-grid-column title="Mostra dettagli licenza" class="temp">
     <ng-template kendoGridCellTemplate let-dataItem>
       <div style="display: flex; justify-content: center;">
-        <button kendoGridEditCommand [primary]="true" (click)="onShowDetails(dataItem.userId)">Dettagli</button>
+        <button kendoGridEditCommand [primary]="true" (click)="onShowDetails(dataItem.id)">Dettagli</button>
       </div>
     </ng-template>
   </kendo-grid-column>

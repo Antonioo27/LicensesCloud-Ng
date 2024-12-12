@@ -2,7 +2,34 @@
   display: flex;
   flex-direction: row;
   align-items: start;
-  justify-content: start;
+  justify-content: space-between;
   height: 100%;
+  margin-left:20px;
+  margin-right:20px;
+  width: 100%;
   gap: 20px;
+}
+.detailHeader{
+  margin-top:10px;
+  padding:10px;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: space-around;
+  gap:80px;
+  justify-content: center;
+  margin-left:20px;
+  margin-right:20px;
+}
+
+.programmi {
+  flex: 2;
+}
+
+.funzioni {
+  flex: 1;
+}
+
+.buttonSave {
+  padding: 20px;
+  margin-top: 20px;
 }

@@ -43,4 +43,18 @@ export class CustomersService extends BaseService {
     );
   }
 
+  public updateCustomer(customer: CustomerModel): Promise<any> {
+    return new Promise<any>((resolve, reject) => {
+      this.http.patch(`${this.BaseUrl_V}/Customer/update`, customer, this.HttpOptions).subscribe({
+        next: (value: any) => {
+           resolve(value);
+         },
+         error: (reason: any) => {
+           reject(reason);
+         },
+         complete: () => {},
+       });
+    });
+  }
+
 }

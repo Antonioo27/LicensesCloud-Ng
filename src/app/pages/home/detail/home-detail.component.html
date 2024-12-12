@@ -13,12 +13,24 @@
  <div class = "container">
 
 
-  <app-programs [licenseType0] = "licenceType0">
+  <app-programs *ngIf="!isLoading" class="programmi" [licenseType0] = "licenceType0">
   </app-programs>
 
-  <app-functions [licenseType1] = "licenceType1">
+  <app-functions *ngIf="!isLoading" class="funzioni" [licenseType1] = "licenceType1">
   </app-functions>
+
+    <lgc-commonbutton class="buttonSave"
+      ButtonText="Save"
+      ButtonClassIcon="save"
+      ButtonSize="md"
+      Width="100%"
+      ButtonType="newLogica color2"
+      [Is_Loading]="isLoading"
+      (click)="salva()"
+    ></lgc-commonbutton>
+
 </div>
+
 
 
 
