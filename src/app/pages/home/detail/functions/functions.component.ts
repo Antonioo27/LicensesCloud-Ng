@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { LicenceItem } from '@lgccommon/lib/models/licencesCloud/Licence.model';
 
 @Component({
   selector: 'app-functions',
@@ -12,6 +13,8 @@ export class FunctionsComponent {
 
   }
 
-
+  setEnabled(dataItem: LicenceItem, e: Event) {
+    dataItem.enabled = !!e;
+  }
 
 }

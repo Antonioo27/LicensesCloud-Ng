@@ -3,7 +3,7 @@
   <kendo-grid-column field="type" title="Type" [sortable]="true" [hidden]="true"></kendo-grid-column>
   <kendo-grid-column field="enabled" title="" [width]="60">
     <ng-template kendoGridCellTemplate let-dataItem>
-      <lgc-commonformitem Type="boolean" [(Value)]="dataItem.enabled"></lgc-commonformitem>
+      <lgc-commonformitem Type="boolean" [Value]="dataItem.enabled" (ValueChange)="setEnabled(dataItem, $event)"></lgc-commonformitem>
     </ng-template>
   </kendo-grid-column>
   <kendo-grid-column field="name" title="Name"></kendo-grid-column>

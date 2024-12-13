@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { LicenceItem } from '@lgccommon/lib/models/licencesCloud/Licence.model';
 import { DateTime } from 'luxon';
 
 @Component({
@@ -15,7 +16,6 @@ export class ProgramsComponent implements OnInit {
   ngOnInit(): void {
     // while(!this.isLoading){
       this.licenseType0.forEach(item => {
-          console.log("Ciao");
           let date = this.convertiStringData(item.expiryDate);
           item.expiryDate = date
       });
@@ -35,6 +35,8 @@ export class ProgramsComponent implements OnInit {
 
   // }
 
-
+  setEnabled(dataItem: LicenceItem, e: Event){
+    dataItem.enabled = !!e;
+  }
 
 }
