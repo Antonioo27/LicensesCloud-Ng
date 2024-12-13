@@ -1,9 +1,6 @@
-import { LicencesService } from './../../../services/licences/licences.service';
 import { Component, Input, OnInit } from '@angular/core';
-import { UserModel } from '@lgccommon/lib/models/licencesCloud/User.model';
 import { LicenceModel } from '@lgccommon/lib/models/licencesCloud/Licence.model';
 import { HomeComponent } from '../home.component';
-import { BaseComponent } from '@app/components/base/base.component';
 import { CustomersService } from '@app/services/customers/customers.service';
 import { ActivatedRoute } from '@angular/router';
 import { CustomerModel } from '@lgccommon/lib/models/licencesCloud/Customer.model';
@@ -62,7 +59,4 @@ export class HomeDetailComponent extends HomeComponent implements OnInit {
       console.error(reason);
     });
   }
-
-
-
 }
