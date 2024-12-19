@@ -11,6 +11,7 @@ import { CustomerInfoViewerComponent } from './home/detail/customer-info-viewer.
 import { ProgramsComponent } from './home/detail/licence/programs/programs.component';
 import { FunctionsComponent } from './home/detail/licence/functions/functions.component';
 import { LicenceViewerComponent } from './home/detail/licence/licence-viewer.component';
+import { ScopeComponent } from './home/detail/scope/scope.component';
 
 
 
@@ -22,6 +23,7 @@ import { LicenceViewerComponent } from './home/detail/licence/licence-viewer.com
     ProgramsComponent,
     FunctionsComponent,
     LicenceViewerComponent,
+    ScopeComponent,
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,10 @@
+<!-- <lgc-debug-json [data]="scopeData" [enabled]="true"></lgc-debug-json> -->
+<kendo-grid [data]="scopeData">
+  <kendo-grid-column field= "id" title="ID" [sortable]="true"></kendo-grid-column>
+  <kendo-grid-column field="label (key)" title="Nome (Chiave)">
+    <ng-template kendoGridCellTemplate let-scopeData>
+        {{scopeData.label}} ({{scopeData.key}})
+    </ng-template>
+  </kendo-grid-column>
+  <kendo-grid-column field="value" title="Versione"> </kendo-grid-column>
+</kendo-grid>
