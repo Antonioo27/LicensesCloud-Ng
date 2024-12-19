@@ -1,9 +1,11 @@
 import { HomeComponent } from './../home.component';
 import { Component, OnInit } from '@angular/core';
 import { AdditionalInformationService } from '@app/services/additionalInformation/additional-information.service';
-import { Customer_AdditionalInfo } from '@lgccommon/lib/models/licencesCloud/Customer.model';
 import { ActivatedRoute } from '@angular/router';
 import { CustomersService } from '@app/services/customers/customers.service';
+import { TabModel } from '@lgccommon/lib/models/TabViewer.model';
+import { ScopeComponent } from './scope/scope.component';
+import { LicenceViewerComponent } from './licence/licence-viewer.component';
 
 @Component({
   selector: 'app-customer-info-viewer',
@@ -14,9 +16,10 @@ export class CustomerInfoViewerComponent extends HomeComponent implements OnInit
 
   public nomeCustomer: string;
 
-  public idCustomer: number;
+  public customerId: number;
 
   public scopeArray: string[];
+  protected tabs: TabModel[] = [];
 
   constructor(private customerAdditionalInfo: AdditionalInformationService,customersService: CustomersService, route: ActivatedRoute) {
    super(customersService);
@@ -27,18 +30,29 @@ export class CustomerInfoViewerComponent extends HomeComponent implements OnInit
       const id = params['id'];
       const nome = params['name'];
       // Use the value of id here
-      this.idCustomer = +id; // Use the + sign to convert the string to a number
+      this.customerId = +id; // Use the + sign to convert the string to a number
       this.nomeCustomer = nome;
     });
-    this.customerAdditionalInfo.getAllScopes(this.idCustomer).then((data) => {
+    this.tabs.push({
+      titleLabel: 'Informazioni licenza',
+      component: LicenceViewerComponent,
+      data: {
+        customerId: this.customerId
+      }
+    } as TabModel);
+    this.customerAdditionalInfo.getAllScopes(this.customerId).then((data) => {
       this.scopeArray = data;
-    });
-    console.log(this.scopeArray );
-  }
-
-  onTabSelect(event: any): void {
-    this.customerAdditionalInfo.getInfoFromScope(event.tab.textLabel).then((data) => {
-      console.log(data);
+      let newTabs = this.scopeArray.map((scope) => {
+        return {
+          titleLabel: scope,
+          component: ScopeComponent,
+          data: {
+            customerId: this.customerId,
+            scope: scope
+          }
+        }
+      });
+      this.tabs.push(...newTabs);
     });
   }
 }

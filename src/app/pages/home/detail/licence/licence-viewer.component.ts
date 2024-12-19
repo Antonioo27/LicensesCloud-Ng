@@ -10,27 +10,21 @@ import { CustomerModel } from '@lgccommon/lib/models/licencesCloud/Customer.mode
   styleUrls: ['./licence-viewer.component.scss']
 })
 export class LicenceViewerComponent extends HomeComponent implements OnInit {
-  // @Input id_customer
+  @Input() customerId: number;
+
   gridDataLicence: LicenceModel;
   licenceType1 = [];
   licenceType0 = [];
   protected isLoading: boolean;
-  idCustomer: number;
   customer: CustomerModel;
 
-  constructor(customersService:CustomersService, route: ActivatedRoute) {
+  constructor(customersService:CustomersService) {
     super(customersService);
   }
 
   ngOnInit(): void {
-    // Preleva i parametri di query
-    this.route.params.subscribe(params => {
-      const id = params['id'];
-      // Use the value of id here
-      this.idCustomer = +id; // Use the + sign to convert the string to a number
-    });
     this.isLoading = true;
-    this.customersService.getCustomer(this.idCustomer).then((data) => {
+    this.customersService.getCustomer(this.customerId).then((data) => {
       //data è il customer
       this.customer = data;
       this.gridDataLicence = data.licence;

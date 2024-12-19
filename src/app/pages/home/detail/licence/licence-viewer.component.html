@@ -3,34 +3,38 @@
 
 
 
-<div *ngIf="!isLoading" class="detailHeader">
+<!-- <div *ngIf="!isLoading" class="detailHeader">
+  <div class="first-row">
     <span><b>Versione</b>: {{ gridDataLicence.version }}</span>
     <span><b>HDD Serial</b>: {{ gridDataLicence.hddSerial }}</span>
+  </div>
+  <div class="second-row">
     <span><b>Proto Serial</b>: {{ gridDataLicence.protoSerial }}</span>
     <span><b>Data di scadenza</b>: {{ gridDataLicence.expiryDate }}</span>
-</div>
+  </div>
+</div> -->
 
 
 <!-- Componente delle LicenceItem con Type = 1 -->
 
- <div class = "container">
+<div class="container">
 
 
-  <app-programs *ngIf="!isLoading" class="programmi" [licenseType0] = "licenceType0">
-  </app-programs>
+  <app-programs *ngIf="!isLoading" class="programmi" [licenseType0] = "licenceType0"></app-programs>
 
-  <app-functions *ngIf="!isLoading" class="funzioni" [licenseType1] = "licenceType1">
-  </app-functions>
 
-    <lgc-commonbutton *ngIf="!isLoading"
-      class="buttonSave"
-      ButtonText="Save"
-      ButtonClassIcon="save"
-      ButtonSize="lg"
-      Width="100%"
-      ButtonType="newLogica color2"
-      [Is_Loading]="isLoading"
-      (click)="salva()"
-    ></lgc-commonbutton>
+
+  <app-functions *ngIf="!isLoading" class="funzioni" [licenseType1] = "licenceType1"></app-functions>
+
+  <lgc-commonbutton *ngIf="!isLoading"
+    class="buttonSave"
+    ButtonText="Save"
+    ButtonClassIcon="save"
+    ButtonSize="lg"
+    Width="100%"
+    ButtonType="newLogica color2"
+    [Is_Loading]="isLoading"
+    (click)="salva()"
+  ></lgc-commonbutton>
 
 </div>

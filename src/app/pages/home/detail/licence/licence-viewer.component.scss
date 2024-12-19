@@ -4,22 +4,31 @@
   align-items: start;
   justify-content: space-between;
   height: 100%;
-  margin-left:20px;
-  margin-right:20px;
   width: 100%;
   gap: 20px;
 }
 .detailHeader{
-  margin-top:10px;
+  // margin-top:10px;
   padding:10px;
   border: 1px solid rgba(0, 0, 0, 0.2);
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   display: flex;
-  flex-direction: space-around;
-  gap:80px;
+  flex-direction: row;
+  width: 39%;
+  flex-wrap: wrap;
+  gap:40px;
   justify-content: center;
-  margin-left:20px;
-  margin-right:20px;
+  // margin-left:20px;
+  // margin-right:20px;
+}
+
+.first-row {
+  display:flex;
+  gap: 10px;
+}
+.second-row {
+  display:flex;
+  gap: 10px;
 }
 
 .programmi {

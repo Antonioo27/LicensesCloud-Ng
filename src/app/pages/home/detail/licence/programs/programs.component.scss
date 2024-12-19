@@ -1,8 +1,9 @@
-#programmi {
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-  text-align: center;
-  padding: 20px;
+.wrapper {
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.header-title {
+  font-size: 1.5rem;
   font-weight: bold;
-  margin-top: 30px;
+  letter-spacing: -1px;
 }
