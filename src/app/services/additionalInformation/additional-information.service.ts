@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BaseService } from '../base/base.service';
-import { Customer_GetInfoFromScopeOutModel } from '@lgccommon/lib/models/licencesCloud/Customer.model';
+import { Customer_GetInfoFromScopeInModel } from '@lgccommon/lib/models/licencesCloud/Customer.model';
 @Injectable({
   providedIn: 'root'
 })
@@ -10,7 +10,7 @@ export class AdditionalInformationService extends BaseService{
     super();
   }
 
-  public getAllScopes(costumerId: number): Promise<any> {
+  public getAllScopes(costumerId: number): Promise<string[]> {
     return new Promise<string[]>((resolve, reject) => {
       this.http.get(`${this.BaseUrl_V}/Customer/getAllScopes/${costumerId}`, this.HttpOptions).subscribe({
         next: (value: any) => {
@@ -24,9 +24,9 @@ export class AdditionalInformationService extends BaseService{
     });
   }
 
-  public getInfoFromScope(scope: string): Promise<any> {
-    return new Promise<Customer_GetInfoFromScopeOutModel[]>((resolve, reject) => {
-      this.http.get(`${this.BaseUrl_V}/Customer/getInfoFromScope/${scope}`, this.HttpOptions).subscribe({
+  public getInfoFromScope(customerId: number, scope: string): Promise<Customer_GetInfoFromScopeInModel[]> {
+    return new Promise<Customer_GetInfoFromScopeInModel[]>((resolve, reject) => {
+      this.http.get(`${this.BaseUrl_V}/Customer/getInfoFromScope/${customerId}/${scope}`, this.HttpOptions).subscribe({
         next: (value: any) => {
           resolve(value);
         },
