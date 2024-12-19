@@ -5,7 +5,8 @@ import { AuthGuard } from '@app/helpers/auth/auth.guard';
 import { AuthLoginGuard } from '@app/helpers/auth/auth-login.guard';
 import { LayoutComponent } from '@app/layout/layout.component';
 import { HomeComponent } from './home/home.component';
-import { HomeDetailComponent } from './home/detail/home-detail.component';
+import { CustomerInfoViewerComponent } from './home/detail/customer-info-viewer.component';
+
 import * as path from 'path';
 
 const routes: Routes = [
@@ -29,8 +30,8 @@ const routes: Routes = [
       component: HomeComponent,
     },
     {
-       path: 'home/detail/:id',
-       component: HomeDetailComponent
+       path: 'home/detail/:id/:name',
+       component: CustomerInfoViewerComponent,
     },
     {
       path: 'home/detail',

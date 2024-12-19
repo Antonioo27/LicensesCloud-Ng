@@ -26,11 +26,10 @@ export class HomeComponent extends BaseComponent implements OnInit{
     });
   }
 
-  onShowDetails(id: number): void {
-    // Naviga in home/detail con l'ID come parametro di query
+  onShowDetails(id: number, name: string): void {
+    // Naviga in home/detail con l'ID e il nome come parametri di query
     const currentUrl = this.router.url; // Ottieni la rotta attuale
-    this.router.navigate([`${currentUrl}/detail`, id]);
-    // this.router.navigate([`${currentUrl}/detail:${id}`]); // Aggiungi il segmento "admin" e l'ID come parte della rotta
+    this.router.navigate([`${currentUrl}/detail`, id, name ]);
     // Resto del codice per gestire l'evento
   }
 }

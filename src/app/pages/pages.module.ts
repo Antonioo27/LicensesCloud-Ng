@@ -7,19 +7,21 @@ import { BlocksModule } from '@lgccommon/lib/blocks/blocks.module';
 import { HomeComponent } from './home/home.component';
 import { LgcSharedTelerikModule } from '@app/@shared/shared-telerik.module';
 import { LgcSharedModule } from '@app/@shared/shared.module';
-import { HomeDetailComponent } from './home/detail/home-detail.component';
-import { ProgramsComponent } from './home/detail/programs/programs.component';
-import { FunctionsComponent } from './home/detail/functions/functions.component';
+import { CustomerInfoViewerComponent } from './home/detail/customer-info-viewer.component';
+import { ProgramsComponent } from './home/detail/licence/programs/programs.component';
+import { FunctionsComponent } from './home/detail/licence/functions/functions.component';
+import { LicenceViewerComponent } from './home/detail/licence/licence-viewer.component';
 
 
 
 @NgModule({
   declarations: [
     HomeComponent,
-    HomeDetailComponent,
+    CustomerInfoViewerComponent,
     LoginComponent,
     ProgramsComponent,
     FunctionsComponent,
+    LicenceViewerComponent,
   ],
   imports: [
     CommonModule,
@@ -31,7 +33,7 @@ import { FunctionsComponent } from './home/detail/functions/functions.component'
   ],
   exports: [
     HomeComponent,
-    HomeDetailComponent,
+    CustomerInfoViewerComponent,
     LoginComponent
   ]
 })

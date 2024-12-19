@@ -1,15 +1,15 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { LicenceModel } from '@lgccommon/lib/models/licencesCloud/Licence.model';
-import { HomeComponent } from '../home.component';
+import { HomeComponent } from '../../home.component';
 import { CustomersService } from '@app/services/customers/customers.service';
 import { ActivatedRoute } from '@angular/router';
 import { CustomerModel } from '@lgccommon/lib/models/licencesCloud/Customer.model';
 @Component({
-  selector: 'app-home-detail',
-  templateUrl: './home-detail.component.html',
-  styleUrls: ['./home-detail.component.scss']
+  selector: 'app-licence-viewer',
+  templateUrl: './licence-viewer.component.html',
+  styleUrls: ['./licence-viewer.component.scss']
 })
-export class HomeDetailComponent extends HomeComponent implements OnInit {
+export class LicenceViewerComponent extends HomeComponent implements OnInit {
   // @Input id_customer
   gridDataLicence: LicenceModel;
   licenceType1 = [];

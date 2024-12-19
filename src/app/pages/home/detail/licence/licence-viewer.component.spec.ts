@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HomeDetailComponent } from './home-detail.component';
+import { LicenceViewerComponent } from './licence-viewer.component';
 
 describe('HomeDetailComponent', () => {
-  let component: HomeDetailComponent;
-  let fixture: ComponentFixture<HomeDetailComponent>;
+  let component: LicenceViewerComponent;
+  let fixture: ComponentFixture<LicenceViewerComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [HomeDetailComponent]
+      declarations: [LicenceViewerComponent]
     });
-    fixture = TestBed.createComponent(HomeDetailComponent);
+    fixture = TestBed.createComponent(LicenceViewerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
