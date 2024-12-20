@@ -8,16 +8,26 @@
     ></button>
     <span class="title">Gestione Customers </span>
   </div>
-  <kendo-drawer-container>
-    <kendo-drawer
-      #drawer
-      [items]="items"
-      mode="push"
-      [mini]="true"
-      [expanded]="true"
-      (select)="onSelect($event)"
-    >
-    </kendo-drawer>
+
+    <kendo-drawer-container>
+      <div>
+        <kendo-drawer
+          #drawer
+          [items]="items"
+          mode="push"
+          [mini]="true"
+          [expanded]="true"
+          (select)="onSelect($event)"
+        >
+        </kendo-drawer>
+        <div>
+          <div id="logo">
+          </div>
+          <div id="name">
+          </div>
+        </div>
+      </div>
+
 
     <kendo-drawer-content>
       <!-- TODO: Capire come gestire due router outlet annidati-->
