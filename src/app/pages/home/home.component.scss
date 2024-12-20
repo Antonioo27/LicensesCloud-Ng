@@ -3,4 +3,6 @@
  background-position: center center;
 }
 
-
+::ng-deep #btn-detail{
+    background-color: #ff7d08 !important;
+}

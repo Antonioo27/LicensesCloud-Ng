@@ -66,3 +66,15 @@ kendo-drawer-container >div:nth-of-type(1)>div{
   background-image: url("../../assets/images/logicaName.png");
   background-size: cover;
 }
+::ng-deep .k-drawer-item.k-selected {
+  color: white;
+  background-color: #ff7d08 !important;
+}
+::ng-deep   .k-drawer-item.k-selected:hover, .k-drawer-item.k-selected.k-hover {
+  color: white;
+  background-color: #ff7d08 !important;
+}
+::ng-deep input[type="checkbox"]:checked{
+  background-color: #ff7d08 !important;
+}
+

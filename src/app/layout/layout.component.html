@@ -1,11 +1,4 @@
 <div class="custom-toolbar">
-    <button
-      kendoButton
-      [svgIcon]="menuSvg"
-      fillMode="flat"
-      (click)="drawer.toggle()"
-
-    ></button>
     <span class="title">Gestione Customers </span>
   </div>
 
@@ -17,7 +10,8 @@
           mode="push"
           [mini]="true"
           [expanded]="true"
-          (select)="onSelect($event)"
+          (select)="onSelect($event)"  
+          [autoCollapse]="false"  
         >
         </kendo-drawer>
         <div>
