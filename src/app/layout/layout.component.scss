@@ -40,3 +40,29 @@ kendo-drawer{
   font-weight: bold;
   font-size: 17px;
 }
+kendo-drawer-container >div:nth-of-type(1){
+  height:100%;
+  display:flex;
+  flex-direction: column;
+  gap: 100px;
+  justify-content:space-between;
+  padding-bottom: 50px;
+}
+kendo-drawer-container >div:nth-of-type(1)>div{
+  display: flex;
+  flex-direction: column;
+  gap:10px;
+  align-items: center;
+}
+#logo{
+  height: 100px;
+  width: 100px;
+  background-image: url("../../assets/images/logicaLogo2.svg");
+  background-size: cover;
+}
+#name{
+  height: 28px;
+  width: 60%;
+  background-image: url("../../assets/images/logicaName.png");
+  background-size: cover;
+}
