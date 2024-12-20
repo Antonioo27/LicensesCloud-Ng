@@ -16,25 +16,26 @@
 
 
 <!-- Componente delle LicenceItem con Type = 1 -->
-
+<div class="container2">
 <div class="container">
 
 
-  <app-programs *ngIf="!isLoading" class="programmi" [licenseType0] = "licenceType0"></app-programs>
+  <app-programs *ngIf="!isLoading" class="programmi" [licenseType0] = "licenceType0" style="height: 100%;"></app-programs>
 
 
 
-  <app-functions *ngIf="!isLoading" class="funzioni" [licenseType1] = "licenceType1"></app-functions>
+  <app-functions *ngIf="!isLoading" class="funzioni" [licenseType1] = "licenceType1" style="height: 100%;"></app-functions>
 
-  <lgc-commonbutton *ngIf="!isLoading"
-    class="buttonSave"
-    ButtonText="Save"
-    ButtonClassIcon="save"
-    ButtonSize="lg"
-    Width="100%"
-    ButtonType="newLogica color2"
-    [Is_Loading]="isLoading"
-    (click)="salva()"
-  ></lgc-commonbutton>
 
+</div>
+<lgc-commonbutton *ngIf="!isLoading"
+  class="buttonSave"
+  ButtonText="Save"
+  ButtonClassIcon="save"
+  ButtonSize="lg"
+  Width="100%"
+  ButtonType="newLogica color2"
+  [Is_Loading]="isLoading"
+  (click)="salva()"
+></lgc-commonbutton>
 </div>

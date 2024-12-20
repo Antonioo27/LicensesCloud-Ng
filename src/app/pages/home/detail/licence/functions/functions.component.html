@@ -1,7 +1,7 @@
 <div class="w-100 d-flex align-items-center justify-content-start mb-1">
   <span class="header-title">Funzioni</span>
 </div>
-<kendo-grid [data]="licenseType1">
+<kendo-grid [data]="licenseType1" [scrollable]="true" style="height: 90%;">
   <kendo-grid-column field="type" title="Type" [sortable]="true" [hidden]="true"></kendo-grid-column>
   <kendo-grid-column field="enabled" title="" [width]="60">
     <ng-template kendoGridCellTemplate let-dataItem>

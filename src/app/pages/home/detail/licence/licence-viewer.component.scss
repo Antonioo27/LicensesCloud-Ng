@@ -1,11 +1,21 @@
+.container2 {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  align-items: center;
+  justify-content: start;
+}
+
+
 .container {
   display: flex;
   flex-direction: row;
   align-items: start;
   justify-content: space-between;
-  height: 100%;
+  height: 85%;
   width: 100%;
   gap: 20px;
+  flex-wrap: wrap;
 }
 .detailHeader{
   // margin-top:10px;
@@ -42,4 +52,5 @@
 .buttonSave {
   padding: 20px;
   margin-top: 20px;
+  display: block;
 }
