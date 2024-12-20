@@ -23,3 +23,16 @@
 
 
 @import "../../dataprod20-ng/src/theme/theme";
+
+
+.k-drawer-item.k-selected {
+  color: white;
+  background-color: #ff7d08 !important;
+}
+.k-drawer-item.k-selected:hover, .k-drawer-item.k-selected.k-hover {
+  color: white;
+  background-color: #ff7d08 !important;
+}
+input[type="checkbox"]:checked{
+  background-color: #ff7d08 !important;
+}
