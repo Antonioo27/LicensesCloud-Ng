@@ -22,4 +22,8 @@ export class CredentialsService {
   public SetCredentials(data: any) {
     localStorage.setItem(credentialsKey, JSON.stringify(data));
   }
+
+  public DeleteCredentials() {
+    localStorage.removeItem(credentialsKey);
+  }
 }

@@ -14,7 +14,12 @@ export class AuthService extends BaseService {
         this.http.post(`${this.BaseUrl_V}/Login/isLoggedIn`, { token: this.credentialsService.credentials.Token }, this.HttpOptions).subscribe(
           {
             next: (value: boolean) => {
-              resolve(value);
+              if (value) {
+                resolve(value);
+              } else {
+                this.credentialsService.DeleteCredentials();
+                resolve(null);
+              }
             },
             error: (reason: any) => {
               reject(reason);
