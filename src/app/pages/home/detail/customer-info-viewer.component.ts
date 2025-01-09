@@ -6,6 +6,7 @@ import { CustomersService } from '@app/services/customers/customers.service';
 import { TabModel } from '@lgccommon/lib/models/TabViewer.model';
 import { ScopeComponent } from './scope/scope.component';
 import { LicenceViewerComponent } from './licence/licence-viewer.component';
+import { LoginService } from '@app/services/login/login.service';
 
 @Component({
   selector: 'app-customer-info-viewer',
@@ -21,8 +22,8 @@ export class CustomerInfoViewerComponent extends HomeComponent implements OnInit
   public scopeArray: string[];
   protected tabs: TabModel[] = [];
 
-  constructor(private customerAdditionalInfo: AdditionalInformationService,customersService: CustomersService, route: ActivatedRoute) {
-   super(customersService);
+  constructor(private customerAdditionalInfo: AdditionalInformationService,customersService: CustomersService, route: ActivatedRoute, loginService: LoginService) {
+   super(customersService, loginService);
   }
 
   ngOnInit(): void {

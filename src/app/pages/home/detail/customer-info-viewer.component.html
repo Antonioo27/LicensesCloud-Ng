@@ -1,10 +1,12 @@
-<div class="customer-info">
-  <span><b>Cliente</b> : {{ nomeCustomer }}</span>
+<div id="container">
+
+  <div class="customer-info">
+    <span><b>Cliente</b> : {{ nomeCustomer }}</span>
+  </div>
+
+  <!-- <div class="tab-wrapper"> -->
+    <lgc-commontabviewer [tabs]="tabs"></lgc-commontabviewer>
+  <!-- </div> -->
+
 </div>
-
-<!-- <div class="tab-wrapper"> -->
-  <lgc-commontabviewer [tabs]="tabs"></lgc-commontabviewer>
-<!-- </div> -->
-
-
 

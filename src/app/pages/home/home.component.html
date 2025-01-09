@@ -1,4 +1,31 @@
+<button class="btn-addCustomer" (click)="open()">Aggiungi Cliente</button>
+<kendo-window
+title="Inserire dati del cliente"
+*ngIf="opened"
+(close)="close()"
+[draggable]="false"
+[resizable]="false"
+[height]="300"
+[width]="500"
+>
+  <fieldset>
+    <legend>Dettagli Cliente</legend>
 
+    <label class="k-form-field">
+      <span>Username</span>
+      <kendo-textbox [(ngModel)]="username"></kendo-textbox>
+    </label>
+    <label class="k-form-field">
+      <span>Password</span>
+      <kendo-textbox [(ngModel)]="password"></kendo-textbox>
+    </label>
+  </fieldset>
+
+  <div class="k-actions k-actions-end">
+    <button kendoButton type="button" (click)="close()">Annulla</button>
+    <button class="btn-addCustomer" type="submit" (click)="submit()">Registra</button>
+  </div>
+</kendo-window>
 
 <!-- <lgc-sidebarnew></lgc-sidebarnew> -->
 <kendo-grid [data]="gridData" [height]="800" [scrollable]="true">
@@ -14,6 +41,7 @@
     </ng-template>
   </kendo-grid-column>
 </kendo-grid>
+
 
 <!-- <app-home-detail [gridDataLicence]="gridData[0].licence"></app-home-detail> -->
 

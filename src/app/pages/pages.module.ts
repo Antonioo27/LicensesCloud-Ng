@@ -12,7 +12,7 @@ import { ProgramsComponent } from './home/detail/licence/programs/programs.compo
 import { FunctionsComponent } from './home/detail/licence/functions/functions.component';
 import { LicenceViewerComponent } from './home/detail/licence/licence-viewer.component';
 import { ScopeComponent } from './home/detail/scope/scope.component';
-
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -28,7 +28,7 @@ import { ScopeComponent } from './home/detail/scope/scope.component';
   imports: [
     CommonModule,
     PagesRoutingModule,
-
+    FormsModule,
     LgccommonModule,
     BlocksModule,
     LgcSharedModule

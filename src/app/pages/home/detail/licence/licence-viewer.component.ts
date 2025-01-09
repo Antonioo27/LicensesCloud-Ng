@@ -1,3 +1,4 @@
+import { LoginService } from '@app/services/login/login.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { LicenceModel } from '@lgccommon/lib/models/licencesCloud/Licence.model';
 import { HomeComponent } from '../../home.component';
@@ -18,8 +19,8 @@ export class LicenceViewerComponent extends HomeComponent implements OnInit {
   protected isLoading: boolean;
   customer: CustomerModel;
 
-  constructor(customersService:CustomersService) {
-    super(customersService);
+  constructor(customersService:CustomersService, loginService: LoginService) {
+    super(customersService, loginService);
   }
 
   ngOnInit(): void {
