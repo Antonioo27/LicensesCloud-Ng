@@ -3,15 +3,15 @@
   </div>
 
     <kendo-drawer-container>
-      <div>
+      <div class="sidebar">
         <kendo-drawer
           #drawer
           [items]="items"
           mode="push"
           [mini]="true"
           [expanded]="true"
-          (select)="onSelect($event)"  
-          [autoCollapse]="false"  
+          (select)="onSelect($event)"
+          [autoCollapse]="false"
         >
         </kendo-drawer>
         <div>
@@ -24,6 +24,34 @@
 
 
     <kendo-drawer-content style="height: calc(100vh - 50px); overflow-y: hidden;">
+      <button class="btn-addCustomer" (click)="open()">Aggiungi Cliente</button>
+      <kendo-window
+        title="Inserire dati del cliente"
+        *ngIf="opened"
+        (close)="close()"
+        [draggable]="false"
+        [resizable]="false"
+        [height]="300"
+        [width]="500"
+      >
+          <fieldset>
+            <legend>Dettagli Cliente</legend>
+
+            <label class="k-form-field">
+              <span>Username</span>
+              <kendo-textbox [(ngModel)]="username"></kendo-textbox>
+            </label>
+            <label class="k-form-field">
+              <span>Password</span>
+              <kendo-textbox [(ngModel)]="password"></kendo-textbox>
+            </label>
+          </fieldset>
+
+          <div class="k-actions k-actions-end">
+            <button kendoButton type="button" (click)="close()">Annulla</button>
+            <button class="btn-addCustomer" type="submit" (click)="submit()">Registra</button>
+          </div>
+      </kendo-window>
       <!-- TODO: Capire come gestire due router outlet annidati-->
         <router-outlet></router-outlet>
     </kendo-drawer-content>

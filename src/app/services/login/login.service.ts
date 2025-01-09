@@ -24,4 +24,18 @@ export class LoginService extends BaseService {
       });
     });
   }
+
+  public Register(loginModel: LoginModel): Promise<CredentialMiniModel> {
+    return new Promise<CredentialMiniModel>((resolve, reject) => {
+      this.http.post(`${this.BaseUrl_V}/Login/register`, loginModel, this.HttpOptions).subscribe({
+        next: (value: any) => {
+          resolve(value);
+        },
+        error: (reason: any) => {
+          reject(reason);
+        },
+        complete: () => {},
+      });
+    });
+  }
 }
