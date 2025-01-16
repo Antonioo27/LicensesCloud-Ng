@@ -35,7 +35,14 @@
     ></kendo-textarea>
   </kendo-label>
 
-
+  <kendo-label text="Note">
+    <kendo-textarea
+      *ngIf="!isLoading"
+      [rows]="3"
+      resizable="vertical"
+      [(value)]="this.customer.note"
+    ></kendo-textarea>
+  </kendo-label>
 
 
 
