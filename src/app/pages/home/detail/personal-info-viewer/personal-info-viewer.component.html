@@ -1,0 +1,55 @@
+<lgc-loading *ngIf="isLoading"></lgc-loading>
+
+<legend class="k-form-legend">Dettagli cliente</legend>
+
+<div id="firstDiv" class="form-container">
+
+  <kendo-label text="Nome" class="form-label">
+    <kendo-textbox  *ngIf="!isLoading" [(value)]="this.customer.name" ></kendo-textbox>
+  </kendo-label>
+
+  <kendo-label *ngIf="!isLoading" text="Partita Iva" class="form-label">
+    <kendo-textbox
+      [style.width.px]="350"
+      [maxlength]="maxlength"
+      [clearButton]="true"
+      (valueChange)="onValueChange($event)"
+      [(value)]="this.customer.partitaIva"
+      >
+      <ng-template kendoTextBoxSuffixTemplate>
+        <span class="counter">{{ counter }}</span>
+      </ng-template>
+    </kendo-textbox>
+  </kendo-label>
+
+</div>
+
+<div id="secondDiv">
+
+  <kendo-label text="Descrizione">
+    <kendo-textarea
+      *ngIf="!isLoading"
+      [rows]="3"
+      resizable="vertical"
+      [(value)]="this.customer.descrizione"
+    ></kendo-textarea>
+  </kendo-label>
+
+
+
+
+
+</div>
+<lgc-commonbutton *ngIf="!isLoading"
+class="buttonSave"
+ButtonText="Save"
+ButtonClassIcon="save"
+ButtonSize="lg"
+Width="100%"
+ButtonType="newLogica color2"
+[Is_Loading]="isLoading"
+(click)="salva()"
+></lgc-commonbutton>
+
+
+

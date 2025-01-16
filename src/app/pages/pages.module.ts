@@ -13,6 +13,7 @@ import { FunctionsComponent } from './home/detail/licence/functions/functions.co
 import { LicenceViewerComponent } from './home/detail/licence/licence-viewer.component';
 import { ScopeComponent } from './home/detail/scope/scope.component';
 import { FormsModule } from '@angular/forms';
+import { PersonalInfoViewerComponent } from './home/detail/personal-info-viewer/personal-info-viewer.component';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { FormsModule } from '@angular/forms';
     FunctionsComponent,
     LicenceViewerComponent,
     ScopeComponent,
+    PersonalInfoViewerComponent,
   ],
   imports: [
     CommonModule,

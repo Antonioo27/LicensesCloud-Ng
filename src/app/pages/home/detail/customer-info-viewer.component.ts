@@ -1,3 +1,4 @@
+import { PersonalInfoViewerComponent } from './personal-info-viewer/personal-info-viewer.component';
 import { HomeComponent } from './../home.component';
 import { Component, OnInit } from '@angular/core';
 import { AdditionalInformationService } from '@app/services/additionalInformation/additional-information.service';
@@ -6,6 +7,8 @@ import { CustomersService } from '@app/services/customers/customers.service';
 import { TabModel } from '@lgccommon/lib/models/TabViewer.model';
 import { ScopeComponent } from './scope/scope.component';
 import { LicenceViewerComponent } from './licence/licence-viewer.component';
+
+
 import { LoginService } from '@app/services/login/login.service';
 
 @Component({
@@ -34,6 +37,13 @@ export class CustomerInfoViewerComponent extends HomeComponent implements OnInit
       this.customerId = +id; // Use the + sign to convert the string to a number
       this.nomeCustomer = nome;
     });
+    this.tabs.push({
+      titleLabel: 'Informazioni cliente',
+      component: PersonalInfoViewerComponent,
+      data: {
+        customerId: this.customerId
+      }
+    } as TabModel);
     this.tabs.push({
       titleLabel: 'Informazioni licenza',
       component: LicenceViewerComponent,

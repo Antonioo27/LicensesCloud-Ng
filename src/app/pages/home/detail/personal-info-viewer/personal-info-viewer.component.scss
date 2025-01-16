@@ -1,0 +1,43 @@
+::ng-deep .tab-content.ng-star-inserted {
+  padding: 2em; /* Puoi modificare il valore di 10px con il valore desiderato */
+  width: 100%;
+}
+
+::ng-deep .form-container {
+  display: flex;
+  gap: 1.4em; /* Spaziatura tra gli elementi */
+  padding: 0 1em 0 1em;
+  margin-bottom: 1em;
+}
+
+::ng-deep .form-label {
+  display: flex;
+  flex-direction: column; /* Posiziona l'etichetta sopra l'input */
+  font-size: 14px; /* Regola la dimensione del testo per l'etichetta */
+  margin-bottom: 13px; /* Spaziatura sotto l'etichetta */
+}
+
+::ng-deep #secondDiv {
+  width: 85%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  padding: 0 1em 0 1em;
+  gap: 1em;
+}
+
+::ng-deep kendo-label {
+  width: 100%;
+}
+
+::ng-deep textarea {
+  width: 100%;
+}
+
+
+.buttonSave {
+  padding: 20px;
+  margin-top: 20px;
+  display: block;
+  text-align: center;
+}

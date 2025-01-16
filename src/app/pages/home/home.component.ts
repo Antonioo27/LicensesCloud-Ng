@@ -50,9 +50,17 @@ export class HomeComponent extends BaseComponent implements OnInit{
 
   public submit(): void {
     this.close();
+
     if(this.username.trim().length > 0 && this.password.trim().length > 0) {
       this.loginService.Register({ Username: this.username, Password: this.password }).then(() => {
-        location.reload();
+        this.customersService.getCustomers().then((data) => {
+          this.gridData = data;
+          const currentUrl = this.router.url; // Ottieni la rotta attuale
+          const lastIndex = this.gridData.length - 1;
+          const lastElementId = this.gridData[lastIndex].id;
+          this.router.navigate([`${currentUrl}/detail`, lastElementId, this.username ]);
+        //location.reload();
+        });
       }).catch((error) => {
         console.error(error);
       });

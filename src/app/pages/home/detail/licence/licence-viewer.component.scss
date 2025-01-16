@@ -51,6 +51,12 @@
 
 .buttonSave {
   padding: 20px;
-  margin-top: 20px;
   display: block;
+}
+
+.customer-info{
+  display: flex;
+  justify-content: space-around;
+  gap: 15px;
+  font-weight: bold;
 }
