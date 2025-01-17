@@ -13,6 +13,11 @@ export class ProgramsComponent implements OnInit {
 
   @Input()  isLoading: boolean;
 
+  public opened = false;
+  public dataSaved = false;
+  public steps: any = { year: 1, day: 1,  hour: 2, minute: 15};
+  public value: Date = new Date(2000, 2, 10, 10, 30);
+
   ngOnInit(): void {
     // while(!this.isLoading){
       this.licenseType0.forEach(item => {
@@ -38,5 +43,18 @@ export class ProgramsComponent implements OnInit {
   setEnabled(dataItem: LicenceItem, e: Event){
     dataItem.enabled = !!e;
   }
+  public close(): void {
+    this.opened = false;
+  }
 
+  public open(): void {
+    this.opened = true;
+  }
+  public salvaDate(): void {
+    this.dataSaved = true;
+    this.close();
+    this.licenseType0.forEach(item => {
+      item.expiryDate = this.value;
+    });
+  }
 }

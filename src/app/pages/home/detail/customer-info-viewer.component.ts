@@ -53,7 +53,7 @@ export class CustomerInfoViewerComponent extends HomeComponent implements OnInit
         customerId: this.customerId
       }
     } as TabModel);
-    this.customerAdditionalInfo.getAllScopes(this.customerId).then((data) => {
+    this.customerAdditionalInfo.getAllScopes().then((data) => {
       this.scopeArray = data;
       let newTabs = this.scopeArray.map((scope) => {
         return {

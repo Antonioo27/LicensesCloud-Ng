@@ -10,20 +10,64 @@
     </ng-template>
   </kendo-grid-column>
   <kendo-grid-column field="name" title="Name" [width]="260"></kendo-grid-column>
-  <kendo-grid-column field="nr" title="Nr" [width]="160">
+  <kendo-grid-column field="nr" title="Nr" [width]="140">
     <ng-template kendoGridCellTemplate let-dataItem>
       <lgc-commonformitem *ngIf="dataItem.manageNr" Type="int" [(Value)]="dataItem.nr" [Disabled]="true"></lgc-commonformitem>
     </ng-template>
   </kendo-grid-column>
-    <kendo-grid-column field="expiryDate" title="Expiry Date" [format]="'{YYYY-MM-DDHHMMSS}'">
+  <kendo-grid-column field="expiryDate" title="Expiry Date" [format]="'{YYYY-MM-DDHHMMSS}'">
+    <ng-template kendoGridHeaderTemplate>
+      <span><b>Expiry Date</b></span>
+      <button id="buttonSalvaDate" (click)="open()">Imposta date</button>
+
+    </ng-template>
     <ng-template kendoGridCellTemplate let-dataItem>
       <kendo-datetimepicker
         [format]="'dd/MM/yyyy HH:mm'"
         [(value)]="dataItem.expiryDate"
       ></kendo-datetimepicker>
-      <!-- <lgc-commonformitem Type="datetimepicker" [(Value)]="dataItem.expiryDate" ></lgc-commonformitem> -->
     </ng-template>
   </kendo-grid-column>
 </kendo-grid>
 
+<kendo-window
+      title="Modifica tutte le date"
+      *ngIf="opened"
+      (close)="close()"
+      [minWidth]="250"
+      [width]="450"
+      [top]="200"
+      [left]="220"
+      [draggable]="false"
+    >
+      <form class="k-form">
+        <fieldset>
+          <label class="k-form-field">
+              <kendo-label
+                class="k-display-block"
+                [for]="dateinput"
+                text="Inserire data:"
+              ></kendo-label>
+              <kendo-dateinput
+                #dateinput
+                format="dd/MM/yyyy hh:mm a"
+                [steps]="steps"
+                [value]="value"
+              ></kendo-dateinput>
+              <p>(↑ incrementa ↓ decrementa)</p>
+          </label>
+        </fieldset>
+        <div class="k-actions k-actions-end">
+          <button kendoButton type="button" (click)="close()">Cancel</button>
+          <button id="buttonSalvaDate"
+            kendoButton
+            themeColor="primary"
+            type="button"
+            (click)="salvaDate()"
+          >
+            Salva
+          </button>
+        </div>
+      </form>
+    </kendo-window>
 <!-- <div *ngFor="let item of licenseType0">{{item.expiryDate}}</div> -->

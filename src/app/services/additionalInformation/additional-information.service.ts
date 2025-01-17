@@ -10,9 +10,9 @@ export class AdditionalInformationService extends BaseService{
     super();
   }
 
-  public getAllScopes(costumerId: number): Promise<string[]> {
+  public getAllScopes(): Promise<string[]> {
     return new Promise<string[]>((resolve, reject) => {
-      this.http.get(`${this.BaseUrl_V}/Customer/getAllScopes/${costumerId}`, this.HttpOptions).subscribe({
+      this.http.get(`${this.BaseUrl_V}/Customer/getAllScopes`, this.HttpOptions).subscribe({
         next: (value: any) => {
           resolve(value);
         },

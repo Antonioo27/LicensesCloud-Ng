@@ -7,3 +7,18 @@
   font-weight: bold;
   letter-spacing: -1px;
 }
+
+
+kendo-window {
+  border: 1px solid black;
+}
+::ng-deep #buttonSalvaDate{
+  background-color: #ff7d08;
+  border: 1px solid #ff7d08;
+  border-radius: 5px;
+  padding: 2.5px 5px;
+  font-size: 14px;
+  color: white;
+  margin-left: auto;
+}
+
