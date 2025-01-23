@@ -4,49 +4,45 @@
 
 <div id="firstDiv" class="form-container">
 
-  <kendo-label text="Nome" class="form-label">
-    <kendo-textbox  *ngIf="!isLoading" [(value)]="this.customer.name" ></kendo-textbox>
-  </kendo-label>
+  <div>
+    <lgc-commonformitem
+      Type="label" Value="Nome">
+    </lgc-commonformitem>
+    <lgc-commonformitem *ngIf="!isLoading"
+      Type="text" [(Value)]="this.customer.name">
+    </lgc-commonformitem>
+  </div>
 
-  <kendo-label *ngIf="!isLoading" text="Partita Iva" class="form-label">
-    <kendo-textbox
-      [style.width.px]="350"
-      [maxlength]="maxlength"
-      [clearButton]="true"
-      (valueChange)="onValueChange($event)"
-      [(value)]="this.customer.partitaIva"
-      >
-      <ng-template kendoTextBoxSuffixTemplate>
-        <span class="counter">{{ counter }}</span>
-      </ng-template>
-    </kendo-textbox>
-  </kendo-label>
+  <div>
+    <lgc-commonformitem
+      Type="label" Value="Partita IVA">
+    </lgc-commonformitem>
+    <lgc-commonformitem *ngIf="!isLoading"
+      Type="text" [(Value)]="this.customer.partitaIva">
+    </lgc-commonformitem>
+  </div>
 
 </div>
 
 <div id="secondDiv">
 
-  <kendo-label text="Descrizione">
-    <kendo-textarea
-      *ngIf="!isLoading"
-      [rows]="3"
-      resizable="vertical"
-      [(value)]="this.customer.descrizione"
-    ></kendo-textarea>
-  </kendo-label>
-
-  <kendo-label text="Note">
-    <kendo-textarea
-      *ngIf="!isLoading"
-      [rows]="3"
-      resizable="vertical"
-      [(value)]="this.customer.note"
-    ></kendo-textarea>
-  </kendo-label>
+  <lgc-commonformitem
+      Type="label" Value="Descrizione">
+  </lgc-commonformitem>
+  <lgc-commonformitem *ngIf="!isLoading"
+   Type="textarea" [(Value)]="this.customer.descrizione">
+  </lgc-commonformitem>
 
 
-
+    <lgc-commonformitem
+      Type="label" Value="Note">
+    </lgc-commonformitem>
+    <lgc-commonformitem *ngIf="!isLoading"
+      Type="textarea" [(Value)]="this.customer.note">
+    </lgc-commonformitem>
 </div>
+
+
 <lgc-commonbutton *ngIf="!isLoading"
 class="buttonSave"
 ButtonText="Save"

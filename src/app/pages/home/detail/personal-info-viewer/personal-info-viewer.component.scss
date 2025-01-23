@@ -8,6 +8,13 @@
   gap: 1.4em; /* Spaziatura tra gli elementi */
   padding: 0 1em 0 1em;
   margin-bottom: 1em;
+  width: 70%;
+}
+
+.form-container div {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
 }
 
 ::ng-deep .form-label {
@@ -16,6 +23,8 @@
   font-size: 14px; /* Regola la dimensione del testo per l'etichetta */
   margin-bottom: 13px; /* Spaziatura sotto l'etichetta */
 }
+
+
 
 ::ng-deep #secondDiv {
   width: 85%;

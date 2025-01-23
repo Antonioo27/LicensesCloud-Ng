@@ -24,9 +24,9 @@ export class AdditionalInformationService extends BaseService{
     });
   }
 
-  public getInfoFromScope(customerId: number, scope: string): Promise<Customer_GetInfoFromScopeInModel[]> {
+  public getInfoFromScopes(customerId: number): Promise<Customer_GetInfoFromScopeInModel[]> {
     return new Promise<Customer_GetInfoFromScopeInModel[]>((resolve, reject) => {
-      this.http.get(`${this.BaseUrl_V}/Customer/getInfoFromScope/${customerId}/${scope}`, this.HttpOptions).subscribe({
+      this.http.get(`${this.BaseUrl_V}/Customer/getInfoFromScopes/${customerId}`, this.HttpOptions).subscribe({
         next: (value: any) => {
           resolve(value);
         },

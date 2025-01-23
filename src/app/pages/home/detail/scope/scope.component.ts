@@ -9,16 +9,14 @@ import { Customer_AdditionalInfo, Customer_GetInfoFromScopeInModel } from '@lgcc
 })
 export class ScopeComponent implements OnInit {
   @Input() customerId: number;
-  @Input() scope: string;
+  @Input() customerInfo: Customer_AdditionalInfo[];
 
   protected scopeData: Customer_GetInfoFromScopeInModel[] = [];
 
   constructor(private additionalInformationService: AdditionalInformationService) {}
 
   ngOnInit(): void {
-    this.additionalInformationService.getInfoFromScope(this.customerId, this.scope).then((data) => {
-      this.scopeData = data;
-    });
+    this.scopeData = this.customerInfo;
   }
 
 }

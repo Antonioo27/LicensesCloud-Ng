@@ -1,22 +1,37 @@
 <lgc-loading *ngIf="isLoading"></lgc-loading>
 
-  <div class="customer-info" *ngIf="!isLoading" >
-    <kendo-label text="Versione">
-      <kendo-textbox
-        [(value)]="this.gridDataLicence.version"
-      ></kendo-textbox>
-    </kendo-label>
-    <kendo-label text="HDD Serial">
-      <kendo-textbox
-        [(value)]="this.gridDataLicence.hddSerial"
-      ></kendo-textbox>
-    </kendo-label>
-    <kendo-label text="Data di scadenza">
-      <kendo-textbox
-        [(value)]="this.gridDataLicence.expiryDate"
-      ></kendo-textbox>
-    </kendo-label>
+
+
+<div class="customer-info" *ngIf="!isLoading">
+
+  <div>
+    <lgc-commonformitem
+      Type="label" Value="Versioni">
+    </lgc-commonformitem>
+    <lgc-commonformitem
+      Type="text" [(Value)]="this.gridDataLicence.version">
+    </lgc-commonformitem>
   </div>
+
+  <div>
+    <lgc-commonformitem
+      Type="label" Value="HDD Serial">
+    </lgc-commonformitem>
+    <lgc-commonformitem
+        Type="text" [(Value)]="this.gridDataLicence.hddSerial">
+    </lgc-commonformitem>
+  </div>
+
+  <div>
+    <lgc-commonformitem
+      Type="label" Value="Expiry Date">
+    </lgc-commonformitem>
+    <lgc-commonformitem
+     Type="datepicker" [(Value)]="this.gridDataLicence.expiryDate">
+    </lgc-commonformitem>
+  </div>
+
+</div>
 
 
 

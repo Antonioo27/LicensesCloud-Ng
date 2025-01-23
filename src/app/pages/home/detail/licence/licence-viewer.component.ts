@@ -32,11 +32,14 @@ export class LicenceViewerComponent extends HomeComponent implements OnInit {
 
       this.licenceType1 = this.gridDataLicence.items.filter(item => item.type == 1);
       this.licenceType0 = this.gridDataLicence.items.filter(item => item.type == 0);
-
+      this.gridDataLicence.expiryDate = new Date(this.gridDataLicence.expiryDate);
       this.isLoading = false;
+
     });
       // console.log(this.gridDataLicence)
   }
+
+
 
   salva() {
     this.gridDataLicence.items = [...this.licenceType0, ...this.licenceType1]; //concateno gli array che precedentemente ho filtrato

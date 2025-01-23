@@ -11,6 +11,7 @@ import { ChangeDetectorRef } from '@angular/core';
 
 
 import { LoginService } from '@app/services/login/login.service';
+import { Customer_GetInfoFromScopeInModel } from '@lgccommon/lib/models/licencesCloud/Customer.model';
 
 @Component({
   selector: 'app-customer-info-viewer',
@@ -26,6 +27,7 @@ export class CustomerInfoViewerComponent extends HomeComponent implements OnInit
 
   public scopeArray: string[];
   protected tabs: TabModel[] = [];
+  public customerInfo: Customer_GetInfoFromScopeInModel[];
 
   constructor(private customerAdditionalInfo: AdditionalInformationService,customersService: CustomersService, route: ActivatedRoute, loginService: LoginService, private cdr: ChangeDetectorRef ) {
    super(customersService, loginService);
@@ -53,24 +55,40 @@ export class CustomerInfoViewerComponent extends HomeComponent implements OnInit
         customerId: this.customerId
       }
     } as TabModel);
+
     this.customerAdditionalInfo.getAllScopes().then((data) => {
       this.scopeArray = data;
-      let newTabs = this.scopeArray.map((scope) => {
-        return {
-          titleLabel: scope,
-          component: ScopeComponent,
-          data: {
-            customerId: this.customerId,
-            scope: scope
+
+      this.customerAdditionalInfo.getInfoFromScopes(this.customerId).then((dataCustomer) => {
+        this.customerInfo = dataCustomer;
+
+        const scopeMap = new Map<string, Customer_GetInfoFromScopeInModel[]>();
+        this.customerInfo.forEach((customer) => {
+          const scope = customer.scope;
+          if (scopeMap.has(scope)) {
+            scopeMap.get(scope).push(customer);
+          } else {
+            scopeMap.set(scope, [customer]);
           }
-        }
+        });
+
+        scopeMap.forEach((customers, scope) => {
+          this.tabs.push({
+            titleLabel: scope,
+            component: ScopeComponent,
+            data: {
+              customerId: this.customerId,
+              customerInfo: customers,
+            }
+          } as TabModel);
+        });
+
+        this.isLoading = false;
+        this.cdr.detectChanges();
+
       });
-      this.tabs.push(...newTabs);
-      this.isLoading = false;
-
-      this.cdr.detectChanges();
-
     });
   }
 
 }
+

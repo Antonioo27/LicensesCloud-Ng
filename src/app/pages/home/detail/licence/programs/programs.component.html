@@ -18,14 +18,18 @@
   <kendo-grid-column field="expiryDate" title="Expiry Date" [format]="'{YYYY-MM-DDHHMMSS}'">
     <ng-template kendoGridHeaderTemplate>
       <span><b>Expiry Date</b></span>
-      <button id="buttonSalvaDate" (click)="open()">Imposta date</button>
-
+      <lgc-commonbutton *ngIf="!isLoading"
+        ButtonText="Imposta date"
+        Width="90%"
+        ButtonType="newLogica color2 buttonSalvaDate"
+        [Is_Loading]="isLoading"
+        (ButtonAction)="open()"
+      ></lgc-commonbutton>
     </ng-template>
     <ng-template kendoGridCellTemplate let-dataItem>
-      <kendo-datetimepicker
-        [format]="'dd/MM/yyyy HH:mm'"
-        [(value)]="dataItem.expiryDate"
-      ></kendo-datetimepicker>
+      <lgc-commonformitem
+      Type="datepicker" [(Value)]="dataItem.expiryDate">
+     </lgc-commonformitem>
     </ng-template>
   </kendo-grid-column>
 </kendo-grid>
@@ -43,30 +47,24 @@
       <form class="k-form">
         <fieldset>
           <label class="k-form-field">
-              <kendo-label
+              <lgc-commonformitem
+                Type='label'
                 class="k-display-block"
-                [for]="dateinput"
-                text="Inserire data:"
-              ></kendo-label>
-              <kendo-dateinput
-                #dateinput
-                format="dd/MM/yyyy hh:mm a"
-                [steps]="steps"
-                [value]="value"
-              ></kendo-dateinput>
-              <p>(↑ incrementa ↓ decrementa)</p>
+                Value="Inserire data:"
+              ></lgc-commonformitem>
+              <lgc-commonformitem
+                Type="datepicker"
+                [(Value)]="value"
+              ></lgc-commonformitem>
           </label>
         </fieldset>
         <div class="k-actions k-actions-end">
-          <button kendoButton type="button" (click)="close()">Cancel</button>
-          <button id="buttonSalvaDate"
-            kendoButton
-            themeColor="primary"
-            type="button"
-            (click)="salvaDate()"
+          <lgc-commonbutton (ButtonAction)="close()" ButtonText="{{'Cancel'}}"></lgc-commonbutton>
+          <lgc-commonbutton id="buttonSalvaDate"
+            (ButtonAction)="salvaDate()"
+            ButtonText="{{'Salva'}}"
           >
-            Salva
-          </button>
+          </lgc-commonbutton>
         </div>
       </form>
     </kendo-window>
