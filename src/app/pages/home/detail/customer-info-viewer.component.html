@@ -7,6 +7,17 @@
   <!-- <div class="tab-wrapper"> -->
     <lgc-commontabviewer *ngIf="!isLoading" [tabs]="tabs"></lgc-commontabviewer>
   <!-- </div> -->
+  <lgc-commonbutton *ngIf="!isLoading"
+  class="buttonSave"
+  ButtonText="Save"
+  ButtonClassIcon="save"
+  ButtonSize="lg"
+  Width="100%"
+  ButtonType="newLogica color2"
+  [Is_Loading]="isLoading"
+  (click)="salva()"
+  ></lgc-commonbutton>
+
 
 </div>
 

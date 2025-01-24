@@ -1,3 +1,4 @@
+import { CacheService } from './../../../../services/cache/cache.service';
 import { LoginService } from '@app/services/login/login.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { LicenceModel } from '@lgccommon/lib/models/licencesCloud/Licence.model';
@@ -5,6 +6,7 @@ import { HomeComponent } from '../../home.component';
 import { CustomersService } from '@app/services/customers/customers.service';
 import { ActivatedRoute } from '@angular/router';
 import { CustomerModel } from '@lgccommon/lib/models/licencesCloud/Customer.model';
+
 @Component({
   selector: 'app-licence-viewer',
   templateUrl: './licence-viewer.component.html',
@@ -12,33 +14,35 @@ import { CustomerModel } from '@lgccommon/lib/models/licencesCloud/Customer.mode
 })
 export class LicenceViewerComponent extends HomeComponent implements OnInit {
   @Input() customerId: number;
-
+  @Input() customer: CustomerModel;
   gridDataLicence: LicenceModel;
+
+  @Input() tabId = 'licenceInfo';
+
   licenceType1 = [];
   licenceType0 = [];
   protected isLoading: boolean;
-  customer: CustomerModel;
 
-  constructor(customersService:CustomersService, loginService: LoginService) {
+  constructor(customersService:CustomersService, loginService: LoginService, private cacheService: CacheService) {
     super(customersService, loginService);
   }
 
   ngOnInit(): void {
     this.isLoading = true;
-    this.customersService.getCustomer(this.customerId).then((data) => {
-      //data è il customer
-      this.customer = data;
-      this.gridDataLicence = data.licence;
+    this.gridDataLicence = this.customer.licence;
 
-      this.licenceType1 = this.gridDataLicence.items.filter(item => item.type == 1);
-      this.licenceType0 = this.gridDataLicence.items.filter(item => item.type == 0);
-      this.gridDataLicence.expiryDate = new Date(this.gridDataLicence.expiryDate);
-      this.isLoading = false;
+    this.licenceType1 = this.gridDataLicence.items.filter(item => item.type == 1);
+    this.licenceType0 = this.gridDataLicence.items.filter(item => item.type == 0);
+    this.gridDataLicence.expiryDate = new Date(this.gridDataLicence.expiryDate);
+    this.cacheService.registerComponent(this.tabId, this);
+    this.isLoading = false;
+    // console.log(this.gridDataLicence)
 
-    });
-      // console.log(this.gridDataLicence)
   }
 
+  ngOnDestroy(): void {
+    this.cacheService.unregisterComponent(this.tabId);
+  }
 
 
   salva() {
@@ -46,9 +50,6 @@ export class LicenceViewerComponent extends HomeComponent implements OnInit {
     this.customer.licence = this.gridDataLicence;
     this.customersService.updateCustomer(this.customer)
     .then(() => {
-      // Code to execute after the licence update is successful
-      // For example, you can show a success message or navigate to another page
-
         this.router.navigate(["admin/home"], {
           replaceUrl: true,
         });
@@ -57,4 +58,5 @@ export class LicenceViewerComponent extends HomeComponent implements OnInit {
       console.error(reason);
     });
   }
+
 }

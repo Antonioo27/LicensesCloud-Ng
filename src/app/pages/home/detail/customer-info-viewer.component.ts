@@ -1,6 +1,6 @@
 import { PersonalInfoViewerComponent } from './personal-info-viewer/personal-info-viewer.component';
 import { HomeComponent } from './../home.component';
-import { Component, OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { AdditionalInformationService } from '@app/services/additionalInformation/additional-information.service';
 import { ActivatedRoute } from '@angular/router';
 import { CustomersService } from '@app/services/customers/customers.service';
@@ -8,10 +8,13 @@ import { TabModel } from '@lgccommon/lib/models/TabViewer.model';
 import { ScopeComponent } from './scope/scope.component';
 import { LicenceViewerComponent } from './licence/licence-viewer.component';
 import { ChangeDetectorRef } from '@angular/core';
-
+import { CustomerModel } from '@lgccommon/lib/models/licencesCloud/Customer.model';
 
 import { LoginService } from '@app/services/login/login.service';
 import { Customer_GetInfoFromScopeInModel } from '@lgccommon/lib/models/licencesCloud/Customer.model';
+
+// [1] Importa il CacheService
+import { CacheService } from '@app/services/cache/cache.service';
 
 @Component({
   selector: 'app-customer-info-viewer',
@@ -21,40 +24,59 @@ import { Customer_GetInfoFromScopeInModel } from '@lgccommon/lib/models/licences
 export class CustomerInfoViewerComponent extends HomeComponent implements OnInit {
 
   public nomeCustomer: string;
-
   isLoading = true;
   public customerId: number;
-
   public scopeArray: string[];
   protected tabs: TabModel[] = [];
   public customerInfo: Customer_GetInfoFromScopeInModel[];
+  public customer: CustomerModel;
 
-  constructor(private customerAdditionalInfo: AdditionalInformationService,customersService: CustomersService, route: ActivatedRoute, loginService: LoginService, private cdr: ChangeDetectorRef ) {
-   super(customersService, loginService);
+  // [2] Inietta il CacheService nel costruttore
+  constructor(
+    private customerAdditionalInfo: AdditionalInformationService,
+    customersService: CustomersService,
+    route: ActivatedRoute,
+    loginService: LoginService,
+    private cdr: ChangeDetectorRef,
+    private cacheService: CacheService
+  ) {
+    super(customersService, loginService);
   }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       const id = params['id'];
       const nome = params['name'];
-      // Use the value of id here
-      this.customerId = +id; // Use the + sign to convert the string to a number
+      this.customerId = +id;
       this.nomeCustomer = nome;
+
+      // [3] Elimina l'istanza manuale del servizio
+      //  (NON usare new CacheService(...))
+      // const myService = new CacheService(customerAdditionalInfo, customersService);
     });
-    this.tabs.push({
-      titleLabel: 'Informazioni cliente',
-      component: PersonalInfoViewerComponent,
-      data: {
-        customerId: this.customerId
-      }
-    } as TabModel);
-    this.tabs.push({
-      titleLabel: 'Informazioni licenza',
-      component: LicenceViewerComponent,
-      data: {
-        customerId: this.customerId
-      }
-    } as TabModel);
+
+    this.customersService.getCustomer(this.customerId).then((dataCustomer) => {
+      this.customer = dataCustomer;
+
+      this.tabs.push({
+        titleLabel: 'Informazioni cliente',
+        component: PersonalInfoViewerComponent,
+        data: {
+          customerId: this.customerId,
+          customer: this.customer
+        }
+      } as TabModel);
+
+      this.tabs.push({
+        titleLabel: 'Informazioni licenza',
+        component: LicenceViewerComponent,
+        data: {
+          customerId: this.customerId,
+          gridDataLicence: this.customer.licence,
+          customer: this.customer
+        }
+      } as TabModel);
+    });
 
     this.customerAdditionalInfo.getAllScopes().then((data) => {
       this.scopeArray = data;
@@ -72,6 +94,7 @@ export class CustomerInfoViewerComponent extends HomeComponent implements OnInit
           }
         });
 
+        var index = 0;
         scopeMap.forEach((customers, scope) => {
           this.tabs.push({
             titleLabel: scope,
@@ -79,16 +102,21 @@ export class CustomerInfoViewerComponent extends HomeComponent implements OnInit
             data: {
               customerId: this.customerId,
               customerInfo: customers,
+              tabId: 'Scope'+ index,
             }
           } as TabModel);
+          index ++;
         });
 
         this.isLoading = false;
         this.cdr.detectChanges();
-
       });
     });
   }
 
+  // [4] Questo metodo verrà richiamato dal pulsante "Salva" nell'HTML
+  salva() {
+    // Invoca la funzione che chiama `salva()` su tutti i componenti registrati
+    this.cacheService.saveAllTabs();
+  }
 }
-

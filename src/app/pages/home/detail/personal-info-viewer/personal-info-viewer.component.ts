@@ -3,7 +3,7 @@ import { HomeComponent } from '../../home.component';
 import { CustomerModel } from '@lgccommon/lib/models/licencesCloud/Customer.model';
 import { CustomersService } from '@app/services/customers/customers.service';
 import { LoginService } from '@app/services/login/login.service';
-
+import { CacheService } from '@app/services/cache/cache.service';
 @Component({
   selector: 'app-personal-info-viewer',
   templateUrl: './personal-info-viewer.component.html',
@@ -13,7 +13,9 @@ export class PersonalInfoViewerComponent extends HomeComponent implements OnInit
   @Input() customerId: number;
 
   protected isLoading: boolean;
-  customer: CustomerModel;
+  @Input() customer: CustomerModel;
+
+  @Input() tabId = 'personalInfo';
 
   public maxlength = 11;
   public charachtersCount = 0;
@@ -24,19 +26,20 @@ export class PersonalInfoViewerComponent extends HomeComponent implements OnInit
     this.counter = `${this.charachtersCount}/${this.maxlength}`;
   }
 
-  constructor(customersService: CustomersService, loginService: LoginService) {
+  constructor(customersService: CustomersService, loginService: LoginService, private cacheService: CacheService) {
     super(customersService, loginService);
   }
 
   ngOnInit(): void {
-    this.isLoading = true;
-    this.customersService.getCustomer(this.customerId).then((data) => {
-      //data è il customer
-      this.customer = data;
-      this.isLoading = false;
-    });
-      // console.log(this.gridDataLicence)
+    //this.isLoading = true;
+    this.cacheService.registerComponent(this.tabId, this);
   }
+
+  ngOnDestroy(): void {
+    this.cacheService.unregisterComponent(this.tabId);
+  }
+
+
   salva() {
     if(this.customer.partitaIva.length == 11 && /^\d{11}$/.test(this.customer.partitaIva)){
       this.customersService.updateCustomer(this.customer)

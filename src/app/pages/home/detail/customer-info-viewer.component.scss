@@ -47,3 +47,21 @@ h2 > span {
 ::ng-deep app-customer-info-viewer.ng-star-inserted {
   width: 100%;
 }
+
+::ng-deep lgc-commontabviewer{
+  height: 80vh;
+}
+
+::ng-deep lgc-commontabviewer div.tab{
+  height: 100%;
+}
+
+::ng-deep .k-tabstrip{
+  height: 100%;
+}
+
+
+
+.buttonSave{
+  text-align: center;
+}
