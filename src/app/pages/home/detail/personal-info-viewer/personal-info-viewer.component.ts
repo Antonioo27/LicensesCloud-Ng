@@ -37,7 +37,7 @@ export class PersonalInfoViewerComponent extends HomeComponent implements OnInit
 
 
   salva() {
-    if(this.customer.partitaIva.length == 11 && /^\d{11}$/.test(this.customer.partitaIva)){
+    if((!this.customer.partitaIva) || (this.customer.partitaIva.length == 11 && /^\d{11}$/.test(this.customer.partitaIva))){
       this.customersService.updateCustomer(this.customer)
       .then(() => {
         // For example, you can show a success message or navigate to another page
