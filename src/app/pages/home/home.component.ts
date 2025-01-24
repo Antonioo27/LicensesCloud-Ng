@@ -4,6 +4,8 @@ import { Component, inject, OnInit, Input, Output, EventEmitter  } from '@angula
 import { BaseComponent } from '@app/components/base/base.component';
 import { CustomersService } from '@app/services/customers/customers.service';
 import { CustomerModel } from '@lgccommon/lib/models/licencesCloud/Customer.model';
+import { SortDescriptor, orderBy } from '@progress/kendo-data-query';
+
 
 
 @Component({
@@ -12,19 +14,37 @@ import { CustomerModel } from '@lgccommon/lib/models/licencesCloud/Customer.mode
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent extends BaseComponent implements OnInit{
-
   public gridData: CustomerModel[] = [];
-  showHomeDetail: boolean = false; // Proprietà per controllare la visibilità
+  public sort: SortDescriptor[] = [
+    {
+      field: 'name', // Impostato l'ordinamento iniziale sulla colonna 'name'
+      dir: 'asc'
+    }
+  ];
 
   constructor(protected customersService: CustomersService, private loginService: LoginService) {
-    super();
+    super()
   }
 
   ngOnInit(): void {
+    // Carica i clienti all'inizio
     this.customersService.getCustomers().then((data) => {
       this.gridData = data;
+      this.applySort(); // Applica l'ordinamento sui dati appena caricati
     });
   }
+
+  // Gestisce l'ordinamento
+  public sortChange(sort: SortDescriptor[]): void {
+    this.sort = sort; // Salva l'ordinamento scelto dall'utente
+    this.applySort(); // Applica l'ordinamento
+  }
+
+  // Funzione per applicare l'ordinamento
+  private applySort(): void {
+    this.gridData = orderBy(this.gridData, this.sort);
+  }
+
 
   onShowDetails(id: number, name: string): void {
     // Naviga in home/detail con l'ID e il nome come parametri di query
@@ -47,6 +67,7 @@ export class HomeComponent extends BaseComponent implements OnInit{
   public open(): void {
     this.opened = true;
   }
+
 
   public submit(): void {
     this.close();
