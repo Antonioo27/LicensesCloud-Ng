@@ -35,21 +35,13 @@ export class PersonalInfoViewerComponent extends HomeComponent implements OnInit
     this.cacheService.registerComponent(this.tabId, this);
   }
 
-  ngOnDestroy(): void {
-    this.cacheService.unregisterComponent(this.tabId);
-  }
-
 
   salva() {
     if(this.customer.partitaIva.length == 11 && /^\d{11}$/.test(this.customer.partitaIva)){
       this.customersService.updateCustomer(this.customer)
       .then(() => {
-        // Code to execute after the licence update is successful
         // For example, you can show a success message or navigate to another page
-
-          this.router.navigate(["admin/home"], {
-            replaceUrl: true,
-          });
+          this.cacheService.unregisterComponent(this.tabId);
       })
       .catch((reason) => {
         console.error(reason);

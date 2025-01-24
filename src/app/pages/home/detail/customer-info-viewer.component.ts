@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { PersonalInfoViewerComponent } from './personal-info-viewer/personal-info-viewer.component';
 import { HomeComponent } from './../home.component';
 import { Component, ViewChild, OnInit } from '@angular/core';
@@ -13,7 +14,6 @@ import { CustomerModel } from '@lgccommon/lib/models/licencesCloud/Customer.mode
 import { LoginService } from '@app/services/login/login.service';
 import { Customer_GetInfoFromScopeInModel } from '@lgccommon/lib/models/licencesCloud/Customer.model';
 
-// [1] Importa il CacheService
 import { CacheService } from '@app/services/cache/cache.service';
 
 @Component({
@@ -31,7 +31,6 @@ export class CustomerInfoViewerComponent extends HomeComponent implements OnInit
   public customerInfo: Customer_GetInfoFromScopeInModel[];
   public customer: CustomerModel;
 
-  // [2] Inietta il CacheService nel costruttore
   constructor(
     private customerAdditionalInfo: AdditionalInformationService,
     customersService: CustomersService,
@@ -50,9 +49,6 @@ export class CustomerInfoViewerComponent extends HomeComponent implements OnInit
       this.customerId = +id;
       this.nomeCustomer = nome;
 
-      // [3] Elimina l'istanza manuale del servizio
-      //  (NON usare new CacheService(...))
-      // const myService = new CacheService(customerAdditionalInfo, customersService);
     });
 
     this.customersService.getCustomer(this.customerId).then((dataCustomer) => {
@@ -114,9 +110,8 @@ export class CustomerInfoViewerComponent extends HomeComponent implements OnInit
     });
   }
 
-  // [4] Questo metodo verrà richiamato dal pulsante "Salva" nell'HTML
-  salva() {
-    // Invoca la funzione che chiama `salva()` su tutti i componenti registrati
+  saveAll() {
     this.cacheService.saveAllTabs();
+    location.reload();
   }
 }

@@ -38,5 +38,21 @@ export class AdditionalInformationService extends BaseService{
     });
   }
 
+  public updateCustomerAdditionalInfo(customerId: number, list: Customer_GetInfoFromScopeInModel[]): Promise<void> {
+    return new Promise<void>((resolve, reject) => {
+      this.http.patch(`${this.BaseUrl_V}/Customer/updateCustomerAdditionalInfo/${customerId}`, list, this.HttpOptions).subscribe({
+        next: () => {
+          resolve();
+        },
+        error: (reason: any) => {
+          reject(reason);
+        },
+        complete: () => {},
+      });
+    });
+  }
+
+
+
 
 }

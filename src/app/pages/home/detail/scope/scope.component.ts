@@ -32,21 +32,37 @@ export class ScopeComponent extends HomeComponent implements OnInit {
     this.cacheService.registerComponent(this.tabId, this);
   }
 
-  ngOnDestroy(): void {
-    this.cacheService.unregisterComponent(this.tabId);
+  getNumber(value: string): number | null {
+    return value ? parseInt(value, 10) : null;
   }
 
+  setNumber(scopeData: Customer_GetInfoFromScopeInModel, newValue: number): void {
+    scopeData.value = newValue !== null ? newValue.toString() : '';
+  }
+
+
   salva() {
-    this.customersService.updateCustomer(this.customer).then(() => {
-        // Code to execute after the licence update is successful
-        // For example, you can show a success message or navigate to another page
-          this.router.navigate(["admin/home"], {
-            replaceUrl: true,
-          });
-      })
-      .catch((reason) => {
-        console.error(reason);
+    this.scopeData.forEach(item => {
+      if (item.type === 0 && typeof item.value === 'number') {
+        item.value = (item.value as any).toString();
+      }
+    });
+    this.additionalInformationService.updateCustomerAdditionalInfo(this.customerId, this.scopeData)
+      .then(
+        (response) => {
+          console.log("Metodo andato a buon fine");
+        },
+        (error) => {
+          // Handle error response
+        }
+      )
+      .then(() => {
+        this.cacheService.unregisterComponent(this.tabId);
       });
+  }
+
+  setBoolean(scopeData: Customer_GetInfoFromScopeInModel, intero: number): void{
+    scopeData.value = intero !== null ? intero.toString() : '';
   }
 
 }

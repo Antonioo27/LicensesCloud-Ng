@@ -1,4 +1,6 @@
 <!-- <lgc-debug-json [data]="scopeData" [enabled]="true"></lgc-debug-json> -->
+
+
 <kendo-grid [data]="scopeData">
   <kendo-grid-column field= "id" title="ID" [sortable]="true"></kendo-grid-column>
   <kendo-grid-column field="label (key)" title="Nome (Chiave)">
@@ -6,5 +8,27 @@
         {{scopeData.label}} ({{scopeData.key}})
     </ng-template>
   </kendo-grid-column>
-  <kendo-grid-column field="value" title="Versione"> </kendo-grid-column>
+  <kendo-grid-column field="value" title="Versione">
+    <ng-template kendoGridCellTemplate let-scopeData>
+      <!-- Visualizza input solo se readOnly è false -->
+      <ng-container *ngIf="scopeData.type == 1">
+        <lgc-commonformitem Type="text" [(Value)]="scopeData.value" [Disabled]="scopeData.readOnly"></lgc-commonformitem>
+      </ng-container>
+      <ng-container *ngIf="scopeData.type == 0">
+        <lgc-commonformitem
+          [Disabled]="scopeData.readOnly"
+          Type="int"
+          [Value]="getNumber(scopeData.value)"
+          (ValueChange)="setNumber(scopeData, $event)">
+        </lgc-commonformitem>
+      </ng-container>
+      <ng-container *ngIf="scopeData.type == 2">
+        <lgc-commonformitem Type="bool" [Value]="scopeData.value == 1 ? true:false" (ValueChange)="setBoolean(scopeData, $event)" [Disabled]="scopeData.readOnly" ></lgc-commonformitem>
+      </ng-container>
+  </ng-template>
+  </kendo-grid-column>
+  <kendo-grid-column field="updated" title="Data aggiornamento">
+
+  </kendo-grid-column>
+
 </kendo-grid>

@@ -40,19 +40,13 @@ export class LicenceViewerComponent extends HomeComponent implements OnInit {
 
   }
 
-  ngOnDestroy(): void {
-    this.cacheService.unregisterComponent(this.tabId);
-  }
-
 
   salva() {
     this.gridDataLicence.items = [...this.licenceType0, ...this.licenceType1]; //concateno gli array che precedentemente ho filtrato
     this.customer.licence = this.gridDataLicence;
     this.customersService.updateCustomer(this.customer)
     .then(() => {
-        this.router.navigate(["admin/home"], {
-          replaceUrl: true,
-        });
+      this.cacheService.unregisterComponent(this.tabId);
     })
     .catch((reason) => {
       console.error(reason);
