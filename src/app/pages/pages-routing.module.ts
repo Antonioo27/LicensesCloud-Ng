@@ -30,7 +30,7 @@ const routes: Routes = [
       component: HomeComponent,
     },
     {
-       path: 'home/detail/:id/:name',
+       path: 'home/detail/:id',
        component: CustomerInfoViewerComponent,
     },
     {

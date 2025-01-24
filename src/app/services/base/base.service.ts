@@ -1,11 +1,11 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AppConfigService } from '@lgccommon/lib/services/app-config.service';
-
 import { Location, LocationStrategy } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { CacheTableName, GetAs } from '@lgccommon/lib/models/GetAs';
 import { CredentialsService } from '../credentials/credentials.service';
+import { DebugService } from '../debug/debug.service';
 
 @Injectable({
   providedIn: 'root',
@@ -18,6 +18,7 @@ export class BaseService {
   public location = inject(Location);
   public locationStrategy = inject(LocationStrategy);
 
+  public debugService = inject(DebugService);
 
   public activatedRoute = inject(ActivatedRoute);
   public sysPages: any = new GetAs(CacheTableName.SYS_Pages);
@@ -28,6 +29,7 @@ export class BaseService {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
       Accept: 'application/json',
+      'Debug_Mode': this.debugService.debugMode.toString(),
     }),
     params: {},
   };

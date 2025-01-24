@@ -29,10 +29,10 @@ title="Inserire dati del cliente"
 
 <!-- <lgc-sidebarnew></lgc-sidebarnew> -->
 <kendo-grid [data]="gridData" [height]="800" [scrollable]="true">
-  <kendo-grid-column field="userId" title="User ID"></kendo-grid-column>
+  <kendo-grid-column field="userId" title="User ID" *ngIf="this.debugService.debugMode"></kendo-grid-column>
   <kendo-grid-column field="name" title="Name"></kendo-grid-column>
   <kendo-grid-column field="privateCode" title="Private code"></kendo-grid-column>
-  <kendo-grid-column field="licenceId" title="Licence ID"></kendo-grid-column>
+  <kendo-grid-column field="licenceId" title="Licence ID" *ngIf="this.debugService.debugMode"></kendo-grid-column>
   <kendo-grid-column title="Mostra dettagli licenza" class="temp">
     <ng-template kendoGridCellTemplate let-dataItem>
       <div style="display: flex; justify-content: center;">

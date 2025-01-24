@@ -45,15 +45,15 @@ export class CustomerInfoViewerComponent extends HomeComponent implements OnInit
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       const id = params['id'];
-      const nome = params['name'];
+      // const nome = params['name'];
       this.customerId = +id;
-      this.nomeCustomer = nome;
+      // this.nomeCustomer = nome;
 
     });
 
     this.customersService.getCustomer(this.customerId).then((dataCustomer) => {
       this.customer = dataCustomer;
-
+      this.nomeCustomer=dataCustomer.name
       this.tabs.push({
         titleLabel: 'Informazioni cliente',
         component: PersonalInfoViewerComponent,

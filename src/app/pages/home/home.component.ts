@@ -29,7 +29,7 @@ export class HomeComponent extends BaseComponent implements OnInit{
   onShowDetails(id: number, name: string): void {
     // Naviga in home/detail con l'ID e il nome come parametri di query
     const currentUrl = this.router.url; // Ottieni la rotta attuale
-    this.router.navigate([`${currentUrl}/detail`, id, name ]);
+    this.router.navigate([`${currentUrl}/detail`, id ]);
     // Resto del codice per gestire l'evento
   }
 
@@ -58,7 +58,8 @@ export class HomeComponent extends BaseComponent implements OnInit{
           const currentUrl = this.router.url; // Ottieni la rotta attuale
           const lastIndex = this.gridData.length - 1;
           const lastElementId = this.gridData[lastIndex].id;
-          this.router.navigate([`${currentUrl}/detail`, lastElementId, this.username ]);
+          // this.router.navigate([`${currentUrl}/detail`, lastElementId, this.username ]);
+          this.router.navigate([`${currentUrl}/detail`, lastElementId]);
         //location.reload();
         });
       }).catch((error) => {
