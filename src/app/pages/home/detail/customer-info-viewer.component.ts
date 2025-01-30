@@ -53,7 +53,7 @@ export class CustomerInfoViewerComponent extends HomeComponent implements OnInit
 
     this.customersService.getCustomer(this.customerId).then((dataCustomer) => {
       this.customer = dataCustomer;
-      this.nomeCustomer=dataCustomer.name
+      this.nomeCustomer=dataCustomer.user.username;
       this.tabs.push({
         titleLabel: 'Informazioni cliente',
         component: PersonalInfoViewerComponent,

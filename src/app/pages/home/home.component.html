@@ -38,7 +38,7 @@ title="Inserire dati del cliente"
   (sortChange)="sortChange($event)"
 >
   <kendo-grid-column field="userId" title="User ID" *ngIf="this.debugService.debugMode"></kendo-grid-column>
-  <kendo-grid-column field="name" title="Name" [sortable]="true"></kendo-grid-column>
+  <kendo-grid-column field="user.username" title="Name" [sortable]="true"></kendo-grid-column>
   <kendo-grid-column field="privateCode" title="Private code"></kendo-grid-column>
   <kendo-grid-column field="licenceId" title="Licence ID" *ngIf="this.debugService.debugMode"></kendo-grid-column>
   <kendo-grid-column title="Mostra dettagli licenza" class="temp">
