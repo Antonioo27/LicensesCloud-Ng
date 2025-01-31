@@ -1,0 +1,79 @@
+<button class="btn-addAdditionalInfo" (click)="open()">Aggiungi Informazione</button>
+<kendo-window
+title="Inserire nuova AdditionalInfo"
+*ngIf="opened"
+(close)="close()"
+[draggable]="false"
+[resizable]="false"
+[height]="550"
+[width]="600"
+>
+  <fieldset>
+    <legend>Dettagli informazione</legend>
+
+    <label class="k-form-field">
+      <span>Chiave</span>
+      <lgc-commonformitem Type="text" [(Value)]="key"></lgc-commonformitem>
+    </label>
+    <label class="k-form-field">
+        <span>Label</span>
+        <lgc-commonformitem Type="text" [(Value)]="label"></lgc-commonformitem>
+    </label>
+    <label class="k-form-field">
+        <span>ScopeLabel</span>
+        <lgc-commonformitem Type="text" [(Value)]="scopeLabel"></lgc-commonformitem>
+    </label>
+    <label class="k-form-field">
+      <span>ScopeKey</span>
+      <lgc-commonformitem Type="text" [(Value)]="scopeKey"></lgc-commonformitem>
+    </label>
+    <label class="k-form-field">
+      <span>Tipo</span>
+      <lgc-commonformitem
+        Type="dropdown"
+        [AcceptedValues]="typeOptions"
+        (Value)="type[0]"
+        [(Value)]="type"
+        (ValueChange)="onTypeChange($event)">
+      </lgc-commonformitem>
+    </label>
+    <label class="k-form-field">
+      <span>ReadOnly</span>
+      <lgc-commonformitem Type="bool" [(Value)]="readOnly"></lgc-commonformitem>
+    </label>
+    <label class="k-form-field">
+      <span>Script</span>
+      <lgc-commonformitem Type="textarea" [(Value)]="script" placeholder=""></lgc-commonformitem>
+    </label>
+    <label class="k-form-field">
+      <span>Regex</span>
+      <lgc-commonformitem Type="text" [(Value)]="regex"></lgc-commonformitem>
+    </label>
+  </fieldset>
+
+  <div class="k-actions k-actions-end">
+    <button kendoButton type="button" (click)="close()">Annulla</button>
+    <button class="btn-addAdditionalInfo" type="submit" (click)="submit()">Aggiungi</button>
+  </div>
+</kendo-window>
+
+<!-- <lgc-sidebarnew></lgc-sidebarnew> -->
+
+<kendo-grid
+  [data]="gridData"
+  [height]="800"
+  [scrollable]="true"
+  [sortable]="true"
+  [sort]="sort"
+  (sortChange)="sortChange($event)"
+>
+  <kendo-grid-column field="id" title="Id" *ngIf="this.debugService.debugMode"></kendo-grid-column>
+  <kendo-grid-column field="key" title="Chiave"></kendo-grid-column>
+  <kendo-grid-column field="label" title="Nome" [sortable]="true"></kendo-grid-column>
+  <kendo-grid-column field="scopeLabel" title="Categoria"></kendo-grid-column>
+  <kendo-grid-column field="readOnly" title="readOnly" *ngIf="this.debugService.debugMode"></kendo-grid-column>
+</kendo-grid>
+
+
+
+

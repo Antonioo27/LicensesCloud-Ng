@@ -17,7 +17,7 @@ export class HomeComponent extends BaseComponent implements OnInit{
   public gridData: CustomerModel[] = [];
   public sort: SortDescriptor[] = [
     {
-      field: 'name', // Impostato l'ordinamento iniziale sulla colonna 'name'
+      field: 'user.username', // Impostato l'ordinamento iniziale sulla colonna 'name'
       dir: 'asc'
     }
   ];
@@ -79,7 +79,6 @@ export class HomeComponent extends BaseComponent implements OnInit{
           const currentUrl = this.router.url; // Ottieni la rotta attuale
           const lastIndex = this.gridData.length - 1;
           const lastElementId = this.gridData[lastIndex].id;
-          // this.router.navigate([`${currentUrl}/detail`, lastElementId, this.username ]);
           this.router.navigate([`${currentUrl}/detail`, lastElementId]);
         //location.reload();
         });

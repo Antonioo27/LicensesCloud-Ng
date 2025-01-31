@@ -1,0 +1,38 @@
+
+.temp {
+  vertical-align:middle;
+  background-position: center center;
+ }
+
+ ::ng-deep #btn-detail{
+     background-color: #ff7d08 !important;
+ }
+
+ .btn-addAdditionalInfo{
+   background-color: #ff7d08;
+   border: 1px solid #ff7d08;
+   border-radius: 4px;
+   padding: 5px 10px;
+   font-size: 14px;
+   color: white;
+   margin: 10px 10px 10px 87%;
+
+ }
+
+ kendo-window {
+   border: 1px solid black;
+ }
+
+ .container {
+   display: flex;
+   flex-direction: column;
+   align-items: right;
+ }
+
+ ::ng-deep fieldset {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  gap: 15px;
+
+ }

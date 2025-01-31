@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { CustomerInfoViewerComponent } from './home/detail/customer-info-viewer.component';
 
 import * as path from 'path';
+import { AdditionalInfoComponent } from './additional-info/additional-info.component';
 
 const routes: Routes = [
   {
@@ -28,6 +29,10 @@ const routes: Routes = [
     {
       path: 'home',
       component: HomeComponent,
+    },
+    {
+      path: 'additionalInfo',
+      component: AdditionalInfoComponent,
     },
     {
        path: 'home/detail/:id',

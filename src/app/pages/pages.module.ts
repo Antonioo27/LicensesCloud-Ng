@@ -14,6 +14,7 @@ import { LicenceViewerComponent } from './home/detail/licence/licence-viewer.com
 import { ScopeComponent } from './home/detail/scope/scope.component';
 import { FormsModule } from '@angular/forms';
 import { PersonalInfoViewerComponent } from './home/detail/personal-info-viewer/personal-info-viewer.component';
+import { AdditionalInfoComponent } from './additional-info/additional-info.component';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { PersonalInfoViewerComponent } from './home/detail/personal-info-viewer/
     LicenceViewerComponent,
     ScopeComponent,
     PersonalInfoViewerComponent,
+    AdditionalInfoComponent,
   ],
   imports: [
     CommonModule,
