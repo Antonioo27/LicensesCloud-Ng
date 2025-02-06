@@ -8,6 +8,7 @@ import {
   accessibilityIcon,
   menuIcon,
   starOutlineIcon,
+  searchIcon,
 } from "@progress/kendo-svg-icons";
 import { BaseComponent } from '@app/components/base/base.component';
 
@@ -31,6 +32,8 @@ export class LayoutComponent extends BaseComponent{
     { text: "Clienti", svgIcon: accessibilityIcon, selected: true },
     { separator: true },
     { text: "Informazioni aggiuntive cliente", svgIcon: envelopeLinkIcon },
+    { separator: true },
+    { text: "Ricerca", svgIcon: searchIcon }
   ];
 
   ngOnInit(): void {
@@ -53,6 +56,15 @@ export class LayoutComponent extends BaseComponent{
           item.selected = false;
         }
       });
+    } else if (currentUrl === '/admin/search') {
+      this.items.forEach(item => {
+        if (item.text === 'Ricerca') {
+          item.selected = true;
+          this.selected = item.text;
+        } else {
+          item.selected = false;
+        }
+      });
     }
   }
 
@@ -63,6 +75,8 @@ export class LayoutComponent extends BaseComponent{
       this.router.navigate(['admin/home']);
     } else if (ev.item.text === "Informazioni aggiuntive cliente") {
       this.router.navigate(['admin/additionalInfo']);
+    }else if (ev.item.text === "Ricerca") {
+      this.router.navigate(['admin/search']);
     }
   }
 

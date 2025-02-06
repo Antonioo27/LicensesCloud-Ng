@@ -9,6 +9,7 @@ import { CustomerInfoViewerComponent } from './home/detail/customer-info-viewer.
 
 import * as path from 'path';
 import { AdditionalInfoComponent } from './additional-info/additional-info.component';
+import { SearchComponent } from './search/search.component';
 
 const routes: Routes = [
   {
@@ -33,6 +34,10 @@ const routes: Routes = [
     {
       path: 'additionalInfo',
       component: AdditionalInfoComponent,
+    },
+    {
+      path: 'search',
+      component: SearchComponent,
     },
     {
        path: 'home/detail/:id',

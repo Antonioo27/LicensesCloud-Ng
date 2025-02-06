@@ -15,6 +15,7 @@ import { ScopeComponent } from './home/detail/scope/scope.component';
 import { FormsModule } from '@angular/forms';
 import { PersonalInfoViewerComponent } from './home/detail/personal-info-viewer/personal-info-viewer.component';
 import { AdditionalInfoComponent } from './additional-info/additional-info.component';
+import { SearchComponent } from './search/search.component';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { AdditionalInfoComponent } from './additional-info/additional-info.compo
     ScopeComponent,
     PersonalInfoViewerComponent,
     AdditionalInfoComponent,
+    SearchComponent,
   ],
   imports: [
     CommonModule,
