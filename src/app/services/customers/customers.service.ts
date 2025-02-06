@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BaseService } from '../base/base.service';
 import { Observable } from 'rxjs';
-import { CustomerModel } from '@lgccommon/lib/models/licencesCloud/Customer.model';
+import { Customer_AdditionalInfo, Customer_GetInfoFromScopeInModel, CustomerModel } from '@lgccommon/lib/models/licencesCloud/Customer.model';
 
 @Injectable({
   providedIn: 'root'
@@ -54,6 +54,19 @@ export class CustomersService extends BaseService {
          },
          complete: () => {},
        });
+    });
+  }
+  public getAllCustomerAdditionalInfo(): Promise<Customer_AdditionalInfo[]>  {
+    return new Promise<Customer_AdditionalInfo[]>((resolve, reject) => {
+      this.http.get(`${this.BaseUrl_V}/Customer/getAllCustomerAdditionalInfo`, this.HttpOptions).subscribe({
+        next: (value:any) => {
+          resolve(value);
+        },
+        error: (reason: any) => {
+          reject(reason);
+        },
+        complete: () => {},
+      });
     });
   }
 

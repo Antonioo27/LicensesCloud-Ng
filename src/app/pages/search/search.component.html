@@ -1,1 +1,21 @@
-<p>componente search</p>
+
+<div class="inputRicerca">
+  <lgc-commonformitem Type="textsearch"  [(Value)]="nameSearch"  (ValueChange)="updateFilter()" [Placeholder]="'Inserisci Nome Cliente...'"></lgc-commonformitem>
+  <lgc-commonformitem Type="textsearch"  [(Value)]="keySearch" (ValueChange)="updateFilter()" [Placeholder]="'Inserisci Chiave...'"></lgc-commonformitem>
+  <lgc-commonformitem Type="textsearch" [(Value)]="valueSearch" (ValueChange)="updateFilter()" [Placeholder]="'Inserisci Valore...'"></lgc-commonformitem>
+</div>
+
+<kendo-grid
+  [data]="gridData"
+  [height]="800"
+  [scrollable]="true"
+  [sortable]="true"
+  [sort]="sort"
+  (sortChange)="sortChange($event)"
+>
+  <kendo-grid-column field="customerId" title="CustomerId" *ngIf="this.debugService.debugMode"></kendo-grid-column>
+  <kendo-grid-column field="customer.user.username" title="Nome"></kendo-grid-column>
+  <kendo-grid-column field="key" title="Chiave"></kendo-grid-column>
+  <kendo-grid-column field="value" title="Value" [sortable]="true"></kendo-grid-column>
+  <kendo-grid-column field="updated" title="Updated"></kendo-grid-column>
+</kendo-grid>
