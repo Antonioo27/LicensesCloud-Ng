@@ -1,59 +1,98 @@
-<button class="btn-addAdditionalInfo" (click)="open()">Aggiungi Informazione</button>
+<!-- Bottone per aprire la finestra -->
+<div id="bottoneAggiungi">
+  <lgc-commonbutton
+    ButtonType="newLogica"
+    (click)="open()"
+    ButtonText="Aggiungi Informazione" ButtonSize="lg">
+  </lgc-commonbutton>
+</div>
+
 <kendo-window
-title="Inserire nuova AdditionalInfo"
-*ngIf="opened"
-(close)="close()"
-[draggable]="false"
-[resizable]="false"
-[height]="550"
-[width]="600"
+  title="Inserire nuova AdditionalInfo"
+  *ngIf="opened"
+  (close)="close()"
+  [draggable]="false"
+  [resizable]="false"
+  [height]="windowHeight"
+  [top]="100"
+  [width]="600"
 >
-  <fieldset>
-    <legend>Dettagli informazione</legend>
+  <!-- Se non sei ancora autenticato, mostra il form per la password -->
+  <div *ngIf="!isAuthorized" class="password-container">
+    <h3>Autenticazione</h3>
+    <label>
+      Inserisci la password:
+      <lgc-commonformitem id
+        required
+        [(Value)]="passwordInput"
+        Placeholder="Password"
+        Type="password"
+      ></lgc-commonformitem>
+    </label>
+    <lgc-commonbutton *ngIf="!isLoading"
+      class="buttonSave"
+      ButtonText="Conferma"
+      ButtonSize="lg"
+      Width="100%"
+      ButtonType="newLogica color2"
+      [Is_Loading]="isLoading"
+      (click)="checkPassword()"
+    ></lgc-commonbutton>
+  </div>
 
-    <label class="k-form-field">
-      <span>Chiave</span>
-      <lgc-commonformitem Type="text" [(Value)]="key"></lgc-commonformitem>
-    </label>
-    <label class="k-form-field">
-        <span>Label</span>
-        <lgc-commonformitem Type="text" [(Value)]="label"></lgc-commonformitem>
-    </label>
-    <label class="k-form-field">
-        <span>ScopeLabel</span>
-        <lgc-commonformitem Type="text" [(Value)]="scopeLabel"></lgc-commonformitem>
-    </label>
-    <label class="k-form-field">
-      <span>ScopeKey</span>
-      <lgc-commonformitem Type="text" [(Value)]="scopeKey"></lgc-commonformitem>
-    </label>
-    <label class="k-form-field">
-      <span>Tipo</span>
-      <lgc-commonformitem
-        Type="dropdown"
-        [AcceptedValues]="typeOptions"
-        (Value)="type[0]"
-        [(Value)]="type"
-        (ValueChange)="onTypeChange($event)">
-      </lgc-commonformitem>
-    </label>
-    <label class="k-form-field">
-      <span>ReadOnly</span>
-      <lgc-commonformitem Type="bool" [(Value)]="readOnly"></lgc-commonformitem>
-    </label>
-    <label class="k-form-field">
-      <span>Script</span>
-      <lgc-commonformitem Type="textarea" [(Value)]="script" placeholder=""></lgc-commonformitem>
-    </label>
-    <label class="k-form-field">
-      <span>Regex</span>
-      <lgc-commonformitem Type="text" [(Value)]="regex"></lgc-commonformitem>
-    </label>
-  </fieldset>
+  <!-- Se autenticato, mostra il form per inserire i dati -->
+  <div *ngIf="isAuthorized">
+    <fieldset>
+      <legend>Dettagli informazione</legend>
 
-  <div class="k-actions k-actions-end">
-    <button kendoButton type="button" (click)="close()">Annulla</button>
-    <button class="btn-addAdditionalInfo" type="submit" (click)="submit()">Aggiungi</button>
+      <label class="k-form-field">
+        <span>Chiave</span>
+        <lgc-commonformitem Type="text" [(Value)]="key"></lgc-commonformitem>
+      </label>
+      <label class="k-form-field">
+          <span>Label</span>
+          <lgc-commonformitem Type="text" [(Value)]="label"></lgc-commonformitem>
+      </label>
+      <label class="k-form-field">
+          <span>ScopeLabel</span>
+          <lgc-commonformitem Type="text" [(Value)]="scopeLabel"></lgc-commonformitem>
+      </label>
+      <label class="k-form-field">
+        <span>ScopeKey</span>
+        <lgc-commonformitem Type="text" [(Value)]="scopeKey"></lgc-commonformitem>
+      </label>
+      <label class="k-form-field">
+        <span>Tipo</span>
+        <lgc-commonformitem
+          Type="dropdown"
+          [AcceptedValues]="typeOptions"
+          [(Value)]="type"
+          (ValueChange)="onTypeChange($event)">
+        </lgc-commonformitem>
+      </label>
+      <label class="k-form-field">
+        <span>ReadOnly</span>
+        <lgc-commonformitem Type="bool" [(Value)]="readOnly"></lgc-commonformitem>
+      </label>
+      <label class="k-form-field">
+        <span>Script</span>
+        <lgc-commonformitem Type="textarea" [(Value)]="script" placeholder=""></lgc-commonformitem>
+      </label>
+      <label class="k-form-field">
+        <span>Regex</span>
+        <lgc-commonformitem Type="text" [(Value)]="regex"></lgc-commonformitem>
+      </label>
+    </fieldset>
+
+    <div class="k-actions k-actions-end">
+      <lgc-commonbutton
+      class="buttonSave"
+      (click)="submit()"
+      ButtonText="Aggiungi"
+      ButtonSize="lg"
+      ButtonClassIcon="save"
+      ButtonType="newLogica color2"></lgc-commonbutton>
+    </div>
   </div>
 </kendo-window>
 

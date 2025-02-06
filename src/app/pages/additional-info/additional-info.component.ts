@@ -18,6 +18,15 @@ export class AdditionalInfoComponent extends BaseComponent{
 
   typeOptions: string[] = ['Int', 'String', 'Bool'];
 
+  public isAuthorized: boolean = false;
+
+  public passwordInput: string = '';
+
+  private readonly correctPassword: string = 'admin';
+
+  public windowHeight: number = 250;
+
+
   scopeKey: string;
   scopeLabel: string;
   label: string;
@@ -63,11 +72,33 @@ export class AdditionalInfoComponent extends BaseComponent{
 
   public close(): void {
     this.opened = false;
+    this.isAuthorized = false;
+    this.passwordInput = '';
+    this.windowHeight = 250;
+
+    // Reset eventuali altri campi se necessario
   }
 
   public open(): void {
     this.opened = true;
+    this.isAuthorized = false;  // Reset dell'autorizzazione ad ogni apertura
+    this.passwordInput = '';
+    this.windowHeight = 250;    // Altezza iniziale per la password
+
   }
+
+  public checkPassword(): void {
+    if (this.passwordInput === this.correctPassword) {
+      this.isAuthorized = true;
+      this.windowHeight = 600;
+
+    } else {
+      alert('Password non corretta. Riprova.');
+      // Puoi opzionalmente resettare il campo password
+      this.passwordInput = '';
+    }
+  }
+
 
   public onTypeChange(selectedValue: string): void {
     switch (selectedValue) {
@@ -86,6 +117,10 @@ export class AdditionalInfoComponent extends BaseComponent{
   }
 
   public submit(): void {
+    if (!this.isAuthorized) {
+      alert('Non sei autorizzato a procedere.');
+      return;
+    }
     this.close();
       this.readOnly = this.readOnly? true : false;
       this.additionalInfoService.addAdditionalInfo({

@@ -1,4 +1,11 @@
-<button class="btn-addCustomer" (click)="open()">Aggiungi Cliente</button>
+<div id="bottoneAggiungi">
+  <lgc-commonbutton
+    ButtonType="newLogica"
+    (click)="open()"
+    ButtonText="Aggiungi Cliente" ButtonSize="lg">
+  </lgc-commonbutton>
+</div>
+
 <kendo-window
 title="Inserire dati del cliente"
 *ngIf="opened"
@@ -22,8 +29,13 @@ title="Inserire dati del cliente"
   </fieldset>
 
   <div class="k-actions k-actions-end">
-    <button kendoButton type="button" (click)="close()">Annulla</button>
-    <button class="btn-addCustomer" type="submit" (click)="submit()">Registra</button>
+    <lgc-commonbutton
+      class="buttonSave"
+      (click)="submit()"
+      ButtonText="Aggiungi"
+      ButtonSize="lg"
+      ButtonClassIcon="save"
+      ButtonType="newLogica color2"></lgc-commonbutton>
   </div>
 </kendo-window>
 
@@ -44,7 +56,15 @@ title="Inserire dati del cliente"
   <kendo-grid-column title="Mostra dettagli licenza" class="temp">
     <ng-template kendoGridCellTemplate let-dataItem>
       <div style="display: flex; justify-content: center;">
-        <button kendoGridEditCommand [primary]="true" id="btn-detail" (click)="onShowDetails(dataItem.id, dataItem.name)">Dettagli</button>
+        <lgc-commonbutton *ngIf="!isLoading"
+          class="buttonSave"
+          ButtonText="Dettagli"
+          ButtonSize="lg"
+          Width="100%"
+          ButtonType="newLogica color2"
+          [Is_Loading]="isLoading"
+          (click)="onShowDetails(dataItem.id, dataItem.name)"
+        ></lgc-commonbutton>
       </div>
     </ng-template>
   </kendo-grid-column>
