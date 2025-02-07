@@ -36,8 +36,8 @@ export class PersonalInfoViewerComponent extends HomeComponent implements OnInit
   }
 
 
-  salva() {
-    if((!this.customer.partitaIva) || (this.customer.partitaIva.length == 11 && /^\d{11}$/.test(this.customer.partitaIva))){
+  salva(): void {
+    if(this.cacheService.getCacheEnabled()){
       this.customersService.updateCustomer(this.customer)
       .then(() => {
         // For example, you can show a success message or navigate to another page
@@ -47,7 +47,15 @@ export class PersonalInfoViewerComponent extends HomeComponent implements OnInit
         console.error(reason);
       });
     }else{
-      alert("Numero di Partita Iva non valido");
+      this.cacheService.setCacheEnabled(false);
+    }
+  }
+  
+  checkIVA(): void {
+    if (!this.customer || !this.customer.partitaIva || !/^\d{11}$/.test(this.customer.partitaIva)) {
+      this.cacheService.setCacheEnabled(false);
+    } else {
+      this.cacheService.setCacheEnabled(true);
     }
   }
 

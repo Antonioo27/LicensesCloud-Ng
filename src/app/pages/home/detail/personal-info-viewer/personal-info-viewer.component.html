@@ -18,7 +18,7 @@
       Type="label" Value="Partita IVA">
     </lgc-commonformitem>
     <lgc-commonformitem *ngIf="!isLoading"
-      Type="text" [(Value)]="this.customer.partitaIva">
+      Type="text" [(Value)]="this.customer.partitaIva" (ValueChange)="checkIVA()">
     </lgc-commonformitem>
   </div>
 

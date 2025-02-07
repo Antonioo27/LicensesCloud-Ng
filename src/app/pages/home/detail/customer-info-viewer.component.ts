@@ -111,7 +111,8 @@ export class CustomerInfoViewerComponent extends HomeComponent implements OnInit
   }
 
   saveAll() {
-    this.cacheService.saveAllTabs();
-    location.reload();
+    if(this.cacheService.saveAllTabs())
+      location.reload();
+    
   }
 }
