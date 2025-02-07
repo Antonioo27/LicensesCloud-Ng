@@ -55,7 +55,7 @@ export class AdditionalInformationService extends BaseService{
 
   public getAdditionalInfos(): Promise<AdditionalInfo[]>{
     return new Promise<AdditionalInfo[]>((resolve, reject) => {
-      this.http.get(`${this.BaseUrl_V}/AdditionalInfo/additionalInfos`, this.HttpOptions).subscribe({
+      this.http.get(`${this.BaseUrl_V}/AdditionalInfo/additionalInfo`, this.HttpOptions).subscribe({
         next: (value: any) => {
           resolve(value);
         },

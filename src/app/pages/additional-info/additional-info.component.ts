@@ -14,6 +14,7 @@ import { TypeEnum } from '@lgccommon/lib/models/licencesCloud/Customer.model';
 })
 export class AdditionalInfoComponent extends BaseComponent{
 
+
   public gridData: AdditionalInfo[] = [];
 
   typeOptions: string[] = ['Int', 'String', 'Bool'];
@@ -25,6 +26,8 @@ export class AdditionalInfoComponent extends BaseComponent{
   private readonly correctPassword: string = 'admin';
 
   public windowHeight: number = 250;
+
+  public passwordVisibility: boolean = false;
 
 
   scopeKey: string;
@@ -134,5 +137,12 @@ export class AdditionalInfoComponent extends BaseComponent{
         console.error(error);
       });
   }
+
+    resetPasswordVisibility(e: MouseEvent) {
+      this.passwordVisibility = false;
+    }
+    togglePasswordVisibility(e:MouseEvent) {
+      this.passwordVisibility = true;
+    }
 
 }

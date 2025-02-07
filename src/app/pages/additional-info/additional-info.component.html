@@ -26,8 +26,12 @@
         required
         [(Value)]="passwordInput"
         Placeholder="Password"
-        Type="password"
-      ></lgc-commonformitem>
+        [Type]="passwordVisibility ? 'text' : 'password'"
+      >
+      <button type="button" (mousedown)="togglePasswordVisibility($event)" (mouseup)="resetPasswordVisibility($event)">
+        <i class="fa fa-eye" aria-hidden="true"></i>
+      </button>
+      </lgc-commonformitem>
     </label>
     <lgc-commonbutton *ngIf="!isLoading"
       class="buttonSave"
