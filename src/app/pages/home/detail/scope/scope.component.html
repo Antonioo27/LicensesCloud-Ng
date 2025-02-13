@@ -29,7 +29,7 @@
   </kendo-grid-column>
   <kendo-grid-column title="Data aggiornamento">
     <ng-template kendoGridCellTemplate let-scopeData>
-      {{scopeData.updated | lgc_date}}
+      {{ scopeData.updatedComputed ? (scopeData.updatedComputed | lgc_date) : 'N.D.' }}
     </ng-template>
   </kendo-grid-column>
 

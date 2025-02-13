@@ -16,6 +16,7 @@ import { FormsModule } from '@angular/forms';
 import { PersonalInfoViewerComponent } from './home/detail/personal-info-viewer/personal-info-viewer.component';
 import { AdditionalInfoComponent } from './additional-info/additional-info.component';
 import { SearchComponent } from './search/search.component';
+import { LayoutComponnentModule } from "../../../../lgcsolution/projects/lgccommon/src/lib/layout/components/component.module";
 
 
 @NgModule({
@@ -37,8 +38,9 @@ import { SearchComponent } from './search/search.component';
     FormsModule,
     LgccommonModule,
     BlocksModule,
-    LgcSharedModule
-  ],
+    LgcSharedModule,
+    LayoutComponnentModule
+],
   exports: [
     HomeComponent,
     CustomerInfoViewerComponent,

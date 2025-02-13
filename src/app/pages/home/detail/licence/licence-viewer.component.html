@@ -24,11 +24,20 @@
 
   <div>
     <lgc-commonformitem
-      Type="label" Value="Expiry Date">
+      Type="label" Value="Data di scadenza">
     </lgc-commonformitem>
-    <lgc-commonformitem
-     Type="datepicker" [(Value)]="this.gridDataLicence.expiryDate">
-    </lgc-commonformitem>
+
+      <lgc-commonformitem
+      Type="datetimepicker"
+      [(Value)]="this.gridDataLicence.expiryDate"
+      [DatePickerFormat]="format"
+      >
+      </lgc-commonformitem>
+
+
+
+
+
   </div>
 
 </div>

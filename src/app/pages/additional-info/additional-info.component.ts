@@ -6,6 +6,10 @@ import { orderBy, SortDescriptor } from '@progress/kendo-data-query';
 import { AdditionalInformationService } from '@app/services/additionalInformation/additional-information.service'
 import { AdditionalInfo } from '@lgccommon/lib/models/licencesCloud/AdditionalInfo.model';
 import { TypeEnum } from '@lgccommon/lib/models/licencesCloud/Customer.model';
+import { CommonDialogComponent } from '@lgccommon/lib/blocks/commondialog/commondialog.component';
+import { CommonDialogConfig } from '@lgccommon/lib/blocks/commondialog/commondialog.component';
+import { CommonDialogService } from '@lgccommon/lib/blocks/commondialog/commondialog.service';
+import { CommonDialogDirective } from '@lgccommon/lib/blocks/commondialog/commondialog.directive';
 
 @Component({
   selector: 'app-additional-info',
@@ -45,10 +49,11 @@ export class AdditionalInfoComponent extends BaseComponent{
       dir: 'asc'
     }
   ];
+  CommonDialog: CommonDialogDirective;
 
 
 
-  constructor(protected customersService: CustomersService, private loginService: LoginService, private additionalInfoService: AdditionalInformationService, private cdr: ChangeDetectorRef) {
+  constructor(protected customersService: CustomersService, private loginService: LoginService, private additionalInfoService: AdditionalInformationService, private dialogCommonService: CommonDialogService, private cdr: ChangeDetectorRef) {
     super()
   }
 
@@ -82,12 +87,36 @@ export class AdditionalInfoComponent extends BaseComponent{
     // Reset eventuali altri campi se necessario
   }
 
-  public open(): void {
-    this.opened = true;
-    this.isAuthorized = false;  // Reset dell'autorizzazione ad ogni apertura
-    this.passwordInput = '';
-    this.windowHeight = 250;    // Altezza iniziale per la password
+  public open():void {
+    // var SelectOnlyAssignedProcess = false;
+    // var DP_InfoPress_JobsAssToPUOnly_ShowCheckbox = this.confSys_Item.GetAsBool('DP_InfoPress_JobsAssToPUOnly');
+    // if(DP_InfoPress_JobsAssToPUOnly_ShowCheckbox && this.filterObj.DP_InfoPress_JobsAssToPUOnly && this.filterObj.DP_InfoPress_JobsAssToPUOnly > 0)
+    //   SelectOnlyAssignedProcess = true;
 
+    // this.dialogCommonService.Show(
+    //   this.CommonDialog,
+    //   new CommonDialogConfig({
+    //     height: '90%',
+    //     width: '90%',
+    //     title: 'Aggiungi informazione aggiuntiva',
+    //     actions: {
+    //       // ok: {
+    //       //   text: this.translateService.instant('Generic_SaveAndExit'),
+    //       //   action: this.updateMilestone,
+    //       // },
+    //     },
+    //     contentData: {
+    //       data: {
+
+    //       },
+
+    //     },
+    //     contentTitleType: ,
+    //     contentTitleData: { data: },
+    //   }),
+    // );
+
+    //alert(JSON.stringify(dataItem));
   }
 
   public checkPassword(): void {

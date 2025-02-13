@@ -15,7 +15,7 @@ import { LoginService } from '@app/services/login/login.service';
 })
 export class ScopeComponent extends HomeComponent implements OnInit {
   @Input() customerId: number;
-  @Input() customerInfo: Customer_AdditionalInfo[];
+  @Input() customerInfo: Customer_GetInfoFromScopeInModel[];
   @Input() customer: CustomerModel;
 
 
@@ -29,6 +29,7 @@ export class ScopeComponent extends HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.scopeData = this.customerInfo;
+    console.log(this.scopeData);
     this.cacheService.registerComponent(this.tabId, this);
   }
 
@@ -46,6 +47,7 @@ export class ScopeComponent extends HomeComponent implements OnInit {
       if (item.type === 0 && typeof item.value === 'number') {
         item.value = (item.value as any).toString();
       }
+      // console.log(this.scopeData.updatedComputed);
     });
     this.additionalInformationService.updateCustomerAdditionalInfo(this.customerId, this.scopeData)
       .then(

@@ -16,6 +16,10 @@
   <kendo-grid-column field="customerId" title="CustomerId" *ngIf="this.debugService.debugMode"></kendo-grid-column>
   <kendo-grid-column field="customer.user.username" title="Nome"></kendo-grid-column>
   <kendo-grid-column field="key" title="Chiave"></kendo-grid-column>
-  <kendo-grid-column field="value" title="Value" [sortable]="true"></kendo-grid-column>
-  <kendo-grid-column field="updated" title="Updated"></kendo-grid-column>
+  <kendo-grid-column field="value" title="Valore" [sortable]="true"></kendo-grid-column>
+  <kendo-grid-column field="updated" title="Data aggiornamento">
+    <ng-template kendoGridCellTemplate let-dataItem>
+      {{ dataItem.updated | lgc_date }}
+    </ng-template>
+  </kendo-grid-column>
 </kendo-grid>

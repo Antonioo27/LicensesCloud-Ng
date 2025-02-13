@@ -15,6 +15,7 @@ import { AppConfigService } from '@lgccommon/lib/services/app-config.service';
 import { APP_INITIALIZER } from '@angular/core';
 import { PagesModule } from './pages/pages.module';
 import { LayoutComponent } from './layout/layout.component';
+import { WindowComponent } from './window/window.component';
 
 export function loadAppConfigSync() {
   var url = `${environment.base_href}/assets/config/app.config.json`;
@@ -33,6 +34,7 @@ var temp = loadAppConfigSync();
     AppComponent,
     BaseComponent,
     LayoutComponent,
+    WindowComponent,
   ],
   imports: [
     PagesModule,

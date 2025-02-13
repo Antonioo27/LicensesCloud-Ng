@@ -35,6 +35,9 @@ export class SearchComponent extends BaseComponent {
     // Carica le additionalInfo all'inizio
     this.customerService.getAllCustomerAdditionalInfo().then((data) => {
       this.gridData = data;
+      this.gridData.forEach(item => {
+        console.log(item);
+      });
       this.originalData = data;
       this.applySort(); // Applica l'ordinamento sui dati appena caricati
     });

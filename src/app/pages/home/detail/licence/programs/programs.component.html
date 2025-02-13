@@ -15,9 +15,9 @@
       <lgc-commonformitem *ngIf="dataItem.manageNr" Type="int" [(Value)]="dataItem.nr" [Disabled]="true"></lgc-commonformitem>
     </ng-template>
   </kendo-grid-column>
-  <kendo-grid-column field="expiryDate" title="Expiry Date" [format]="'{YYYY-MM-DDHHMMSS}'">
+  <kendo-grid-column field="expiryDate" title="Data di scadenza" [format]="'{YYYY-MM-DDHHMMSS}'">
     <ng-template kendoGridHeaderTemplate>
-      <span><b>Expiry Date</b></span>
+      <span><b>Data di scadenza</b></span>
       <lgc-commonbutton *ngIf="!isLoading"
         ButtonText="Imposta date"
         Width="90%"
@@ -28,7 +28,7 @@
     </ng-template>
     <ng-template kendoGridCellTemplate let-dataItem>
       <lgc-commonformitem
-      Type="datepicker" [(Value)]="dataItem.expiryDate">
+      Type="datetimepicker" [(Value)]="dataItem.expiryDate">
      </lgc-commonformitem>
     </ng-template>
   </kendo-grid-column>
