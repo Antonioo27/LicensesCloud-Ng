@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { WindowComponent } from './window.component';
+import { AddInformationComponent } from './add-information.component';
 
 describe('WindowComponent', () => {
-  let component: WindowComponent;
-  let fixture: ComponentFixture<WindowComponent>;
+  let component: AddInformationComponent;
+  let fixture: ComponentFixture<AddInformationComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [WindowComponent]
+      declarations: [AddInformationComponent]
     });
-    fixture = TestBed.createComponent(WindowComponent);
+    fixture = TestBed.createComponent(AddInformationComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

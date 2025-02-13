@@ -33,6 +33,7 @@ export class PersonalInfoViewerComponent extends HomeComponent implements OnInit
   ngOnInit(): void {
     //this.isLoading = true;
     this.cacheService.registerComponent(this.tabId, this);
+    this.checkIVA();
   }
 
 
@@ -50,9 +51,10 @@ export class PersonalInfoViewerComponent extends HomeComponent implements OnInit
       this.cacheService.setCacheEnabled(false);
     }
   }
-  
+
   checkIVA(): void {
     if (!this.customer || !this.customer.partitaIva || !/^\d{11}$/.test(this.customer.partitaIva)) {
+      console.log(this.customer.partitaIva);
       this.cacheService.setCacheEnabled(false);
     } else {
       this.cacheService.setCacheEnabled(true);

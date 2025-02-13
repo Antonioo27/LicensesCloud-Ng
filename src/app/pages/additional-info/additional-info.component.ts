@@ -10,6 +10,7 @@ import { CommonDialogComponent } from '@lgccommon/lib/blocks/commondialog/common
 import { CommonDialogConfig } from '@lgccommon/lib/blocks/commondialog/commondialog.component';
 import { CommonDialogService } from '@lgccommon/lib/blocks/commondialog/commondialog.service';
 import { CommonDialogDirective } from '@lgccommon/lib/blocks/commondialog/commondialog.directive';
+import { AddInformationComponent } from '@app/window/add-information/add-information.component';
 
 @Component({
   selector: 'app-additional-info',
@@ -87,36 +88,29 @@ export class AdditionalInfoComponent extends BaseComponent{
     // Reset eventuali altri campi se necessario
   }
 
-  public open():void {
+  public openDialog():void {
     // var SelectOnlyAssignedProcess = false;
     // var DP_InfoPress_JobsAssToPUOnly_ShowCheckbox = this.confSys_Item.GetAsBool('DP_InfoPress_JobsAssToPUOnly');
     // if(DP_InfoPress_JobsAssToPUOnly_ShowCheckbox && this.filterObj.DP_InfoPress_JobsAssToPUOnly && this.filterObj.DP_InfoPress_JobsAssToPUOnly > 0)
     //   SelectOnlyAssignedProcess = true;
 
-    // this.dialogCommonService.Show(
-    //   this.CommonDialog,
-    //   new CommonDialogConfig({
-    //     height: '90%',
-    //     width: '90%',
-    //     title: 'Aggiungi informazione aggiuntiva',
-    //     actions: {
-    //       // ok: {
-    //       //   text: this.translateService.instant('Generic_SaveAndExit'),
-    //       //   action: this.updateMilestone,
-    //       // },
-    //     },
-    //     contentData: {
-    //       data: {
+    this.dialogCommonService.Show(
+      this.CommonDialog,
+      new CommonDialogConfig({
+        height: '70%',
+        width: '50%',
+        title: 'Aggiungi informazione aggiuntiva',
+        // actions: {
+        //   ok: {
+        //     action: null,
+        //   },
+        // },
+        contentData: {
+        }
+      }),
+      AddInformationComponent
+    );
 
-    //       },
-
-    //     },
-    //     contentTitleType: ,
-    //     contentTitleData: { data: },
-    //   }),
-    // );
-
-    //alert(JSON.stringify(dataItem));
   }
 
   public checkPassword(): void {

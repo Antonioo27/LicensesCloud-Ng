@@ -2,22 +2,23 @@
 <div id="bottoneAggiungi">
   <lgc-commonbutton
     ButtonType="newLogica"
-    (click)="open()"
+    (click)="openDialog()"
     ButtonText="Aggiungi Informazione" ButtonSize="lg">
   </lgc-commonbutton>
 </div>
 
-<kendo-window
-  title="Inserire nuova AdditionalInfo"
+<!-- title="Inserire nuova AdditionalInfo"
   *ngIf="opened"
   (close)="close()"
   [draggable]="false"
-  [resizable]="false"
+   [resizable]="false"
   [height]="windowHeight"
   [top]="100"
-  [width]="600"
+  [width]="600" -->
+
+<!-- <lgc-commondialog
+
 >
-  <!-- Se non sei ancora autenticato, mostra il form per la password -->
   <div *ngIf="!isAuthorized" class="password-container">
     <h3>Autenticazione</h3>
     <label>
@@ -26,7 +27,7 @@
         required
         [(Value)]="passwordInput"
         Placeholder="Password"
-        [Type]="passwordVisibility ? 'text' : 'password'"
+        [Type]="passwordVisibility ? 'text' : 'passwo rd'"
       >
       <button type="button" (mousedown)="togglePasswordVisibility($event)" (mouseup)="resetPasswordVisibility($event)">
         <i class="fa fa-eye" aria-hidden="true"></i>
@@ -44,7 +45,6 @@
     ></lgc-commonbutton>
   </div>
 
-  <!-- Se autenticato, mostra il form per inserire i dati -->
   <div *ngIf="isAuthorized">
     <fieldset>
       <legend>Dettagli informazione</legend>
@@ -98,7 +98,9 @@
       ButtonType="newLogica color2"></lgc-commonbutton>
     </div>
   </div>
-</kendo-window>
+</lgc-commondialog> -->
+
+<ng-template commonDialog></ng-template>
 
 <!-- <lgc-sidebarnew></lgc-sidebarnew> -->
 

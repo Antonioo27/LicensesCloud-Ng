@@ -1,12 +1,12 @@
 <div id="bottoneAggiungi">
   <lgc-commonbutton
     ButtonType="newLogica"
-    (click)="open()"
+    (click)="openDialog()"
     ButtonText="Aggiungi Cliente" ButtonSize="lg">
   </lgc-commonbutton>
 </div>
 
-<kendo-window
+<!-- <kendo-window
 title="Inserire dati del cliente"
 *ngIf="opened"
 (close)="close()"
@@ -37,8 +37,8 @@ title="Inserire dati del cliente"
       ButtonClassIcon="save"
       ButtonType="newLogica color2"></lgc-commonbutton>
   </div>
-</kendo-window>
-
+</kendo-window> -->
+<ng-template commonDialog></ng-template>
 <!-- <lgc-sidebarnew></lgc-sidebarnew> -->
 
 <kendo-grid

@@ -5,7 +5,11 @@ import { BaseComponent } from '@app/components/base/base.component';
 import { CustomersService } from '@app/services/customers/customers.service';
 import { CustomerModel } from '@lgccommon/lib/models/licencesCloud/Customer.model';
 import { SortDescriptor, orderBy } from '@progress/kendo-data-query';
-
+import { CommonDialogComponent } from '@lgccommon/lib/blocks/commondialog/commondialog.component';
+import { CommonDialogConfig } from '@lgccommon/lib/blocks/commondialog/commondialog.component';
+import { CommonDialogService } from '@lgccommon/lib/blocks/commondialog/commondialog.service';
+import { CommonDialogDirective } from '@lgccommon/lib/blocks/commondialog/commondialog.directive';
+import { AddCustomerComponent } from '@app/window/add-customer/add-customer.component';
 
 
 @Component({
@@ -15,6 +19,7 @@ import { SortDescriptor, orderBy } from '@progress/kendo-data-query';
 })
 export class HomeComponent extends BaseComponent implements OnInit{
   public gridData: CustomerModel[] = [];
+
   public sort: SortDescriptor[] = [
     {
       field: 'user.username', // Impostato l'ordinamento iniziale sulla colonna 'name'
@@ -22,8 +27,12 @@ export class HomeComponent extends BaseComponent implements OnInit{
     }
   ];
 
+  public dialogCommonService = inject(CommonDialogService);
+
+
   constructor(protected customersService: CustomersService, private loginService: LoginService) {
-    super()
+    super();
+
   }
 
   ngOnInit(): void {
@@ -64,9 +73,30 @@ export class HomeComponent extends BaseComponent implements OnInit{
     this.opened = false;
   }
 
-  public open(): void {
-    this.opened = true;
-  }
+   public openDialog():void {
+      // var SelectOnlyAssignedProcess = false;
+      // var DP_InfoPress_JobsAssToPUOnly_ShowCheckbox = this.confSys_Item.GetAsBool('DP_InfoPress_JobsAssToPUOnly');
+      // if(DP_InfoPress_JobsAssToPUOnly_ShowCheckbox && this.filterObj.DP_InfoPress_JobsAssToPUOnly && this.filterObj.DP_InfoPress_JobsAssToPUOnly > 0)
+      //   SelectOnlyAssignedProcess = true;
+
+      this.dialogCommonService.Show(
+        this.CommonDialog,
+        new CommonDialogConfig({
+          height: '50%',
+          width: '50%',
+          title: 'Aggiungi cliente',
+          // actions: {
+          //   ok: {
+          //     action: null,
+          //   },
+          // },
+          contentData: {
+          }
+        }),
+        AddCustomerComponent
+      );
+
+    }
 
 
   public submit(): void {

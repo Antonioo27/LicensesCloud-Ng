@@ -1,0 +1,23 @@
+
+  <fieldset>
+    <legend>Dettagli Cliente</legend>
+
+    <label class="k-form-field">
+      <span>Nome Cliente</span>
+      <lgc-commonformitem [(Value)]="username"></lgc-commonformitem>
+    </label>
+    <label class="k-form-field">
+      <span>Password</span>
+      <lgc-commonformitem [(Value)]="password"></lgc-commonformitem>
+    </label>
+  </fieldset>
+
+  <div class="k-actions k-actions-end">
+    <lgc-commonbutton
+      class="buttonSave"
+      (click)="submit()"
+      ButtonText="Aggiungi"
+      ButtonSize="lg"
+      ButtonClassIcon="save"
+      ButtonType="newLogica color2"></lgc-commonbutton>
+  </div>

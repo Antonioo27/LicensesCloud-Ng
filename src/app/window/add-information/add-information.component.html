@@ -1,0 +1,80 @@
+<div *ngIf="!isAuthorized" class="password-container">
+  <h3>Autenticazione</h3>
+  <label>
+    Inserisci la password:
+    <lgc-commonformitem id
+      required
+      [(Value)]="passwordInput"
+      Placeholder="Password"
+      [Type]="passwordVisibility ? 'text' : 'password'"
+    >
+    <button type="button" (mousedown)="togglePasswordVisibility($event)" (mouseup)="resetPasswordVisibility($event)">
+      <i class="fa fa-eye" aria-hidden="true"></i>
+    </button>
+    </lgc-commonformitem>
+  </label>
+  <lgc-commonbutton *ngIf="!isLoading"
+    class="buttonSave"
+    ButtonText="Conferma"
+    ButtonSize="lg"
+    Width="100%"
+    ButtonType="newLogica color2"
+    (click)="checkPassword()"
+  ></lgc-commonbutton>
+</div>
+
+<div *ngIf="isAuthorized">
+  <fieldset>
+    <legend>Dettagli informazione</legend>
+
+    <label class="k-form-field">
+      <span>Chiave</span>
+      <lgc-commonformitem Type="text" [(Value)]="key"></lgc-commonformitem>
+    </label>
+    <label class="k-form-field">
+        <span>Label</span>
+        <lgc-commonformitem Type="text" [(Value)]="label"></lgc-commonformitem>
+    </label>
+    <label class="k-form-field">
+        <span>ScopeLabel</span>
+        <lgc-commonformitem Type="text" [(Value)]="scopeLabel"></lgc-commonformitem>
+    </label>
+    <label class="k-form-field">
+      <span>ScopeKey</span>
+      <lgc-commonformitem Type="text" [(Value)]="scopeKey"></lgc-commonformitem>
+    </label>
+    <label class="k-form-field">
+      <span>Tipo</span>
+      <lgc-commonformitem
+        Type="dropdown"
+        [AcceptedValues]="typeOptions"
+        [(Value)]="type"
+        (ValueChange)="onTypeChange($event)">
+      </lgc-commonformitem>
+    </label>
+    <label class="k-form-field">
+      <span>ReadOnly</span>
+      <lgc-commonformitem Type="bool" [(Value)]="readOnly"></lgc-commonformitem>
+    </label>
+    <label class="k-form-field">
+      <span>Script</span>
+      <lgc-commonformitem Type="textarea" [(Value)]="script" placeholder=""></lgc-commonformitem>
+    </label>
+    <label class="k-form-field">
+      <span>Regex</span>
+      <lgc-commonformitem Type="text" [(Value)]="regex"></lgc-commonformitem>
+    </label>
+  </fieldset>
+
+  <div class="k-actions k-actions-end">
+    <lgc-commonbutton
+    class="buttonSave"
+    (click)="submit()"
+    ButtonText="Aggiungi"
+    ButtonSize="lg"
+    ButtonClassIcon="save"
+    ButtonType="newLogica color2"></lgc-commonbutton>
+  </div>
+</div>
+<!-- <p>{{this.message}}</p> -->
+
